@@ -9,7 +9,7 @@
 
         <route id="trigger-manual-materiales">
             <from uri="file:work/eorder/trigger?delete=true&amp;include=precintos"/>
-            <log message="Trigger" />
+            <log message="Trigger" loggingLevel="DEBUG" />
         </route>
 
     </camelContext>

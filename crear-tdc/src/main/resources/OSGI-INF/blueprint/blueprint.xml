@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint"
+                  id="edesur.eorder.crear-tdc"
+                  useMDCLogging="true" >
+
+        <route id="trigger-manual-crear-tdc">
+            <from uri="file:work/eorder/trigger?delete=true&amp;include=crear-.*"/>
+            <log message="Trigger ${file:name}" loggingLevel="DEBUG"/>
+            <choice>
+                <when>
+                    <simple>${file:name} == 'crear-cortes'</simple>
+                    <to uri="direct:crear-cortes"/>
+                </when>
+                <otherwise>
+                    <log message="No accion definida para trigger ${file:name}" loggingLevel="WARN"/>
+                </otherwise>
+            </choice>
+        </route>
+
+        <route id="crear-cortes">
+            <from uri="direct:crear-cortes"/>
+            <log message="Buscar cortes MAC a pasar"/>
+            <to uri="sql:classpath:sql/cortesMAC.sql?dataSource=#SynergiaDS" />
+            <split>
+                <simple>${body}</simple>
+                <log message="${body}" loggingLevel="DEBUG" logName="edesur.eorder.crear-tdc"/>
+            </split>
+            <log message="Fin pasar cortes MAC"/>
+        </route>
+
+    </camelContext>
+
+    <reference id="SynergiaDS"
+               interface="javax.sql.DataSource"
+               availability="mandatory"
+               filter="(osgi.jndi.service.name=jdbc/SynergiaDS)" />
+
+</blueprint>
