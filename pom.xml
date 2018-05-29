@@ -19,14 +19,12 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <version.maven.compiler.plugin>3.2</version.maven.compiler.plugin>
         <maven.compiler.target>1.7</maven.compiler.target>
         <maven.compiler.source>1.7</maven.compiler.source>
-        <cxf-version>3.0.2</cxf-version>
+        <version.maven.compiler.plugin>3.2</version.maven.compiler.plugin>
         <version.maven-surefire-plugin>2.15</version.maven-surefire-plugin>
         <version.maven-bundle-plugin>2.3.7</version.maven-bundle-plugin>
-        <maven-resources-plugin-version>2.6</maven-resources-plugin-version>
-        <camel.version>2.17.0.redhat-630187</camel.version>
+        <cxf-version>3.1.5.redhat-630224</cxf-version>
         <jboss.fuse.bom.version>6.3.0.redhat-224</jboss.fuse.bom.version>
     </properties>
 
@@ -85,41 +83,22 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>org.apache.camel</groupId>
-                <artifactId>camel-blueprint</artifactId>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.camel</groupId>
-                <artifactId>camel-core</artifactId>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.camel</groupId>
-                <artifactId>camel-cxf</artifactId>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.camel</groupId>
-                <artifactId>camel-sql</artifactId>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${version.slf4j}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <build>
         <defaultGoal>validate compile</defaultGoal>
         <finalName>${project.artifactId}</finalName>
-        <!--
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-        -->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${version.maven.compiler.plugin}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -129,7 +108,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${version.maven.compiler.plugin}</version>
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
@@ -154,14 +132,6 @@
                             org.osgi.service.*,
                             javax.sql,
                             *
-                            <!--
-                            org.apache.camel.*,
-                            org.xmlsoap.schemas.soap.envelope,
-                            javax.xml.*,
-                            org.slf4j,
-                            org.osgi.service.*,
-                            *
-                            -->
                         </Import-Package>
                         <DynamicImport-Package>
                             javax.xml.namespace

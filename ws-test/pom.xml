@@ -13,6 +13,21 @@
     <name>Interface eOrder :: WS Test</name>
     <packaging>bundle</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-blueprint</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-cxf</artifactId>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <!-- CXF Plugin to build Java Code from WSDL -->
@@ -30,6 +45,8 @@
                             <wsdlOptions>
                                 <wsdlOption>
                                     <wsdl>${basedir}/src/main/resources/wsdl/SITDC501.wsdl</wsdl>
+                                    <wsdl>${basedir}/src/main/resources/wsdl/SITDC503.wsdl</wsdl>
+                                    <wsdl>${basedir}/src/main/resources/wsdl/SITDC509.wsdl</wsdl>
                                 </wsdlOption>
                             </wsdlOptions>
                         </configuration>
