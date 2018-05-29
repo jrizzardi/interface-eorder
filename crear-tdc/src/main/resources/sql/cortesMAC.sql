@@ -1,4 +1,4 @@
-SELECT c.nro_servicio, c.numero_cliente, c.sucursal,
+SELECT first 2 c.nro_servicio, c.numero_cliente, c.sucursal,
        c.sector, c.zona, c.tarifa
   FROM servicio_cab c JOIN servicio_corte s ON (c.nro_servicio = s.nro_servicio)
   WHERE c.estado_transmision = 'T'
