@@ -1,0 +1,1228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:ns1="http://xmlns.endesa.com/CommonSchemas" xmlns:tns="http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC501/SITDC501_PortType" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns0="http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC501/Mensajes" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="SITDC501_PortType" targetNamespace="http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC501/SITDC501_PortType">
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC501/Mensajes" xmlns:tipos_comunes="http://xmlns.endesa.com/CommonSchemas" targetNamespace="http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC501/Mensajes" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <import namespace="http://xmlns.endesa.com/CommonSchemas"/>
+            <complexType name="Anexo">
+                <all>
+                    <element name="NOMBRE_ANEXO" type="tns:alfanumerico_300" minOccurs="0"/>
+                    <element name="OBLIGATORIO_EN_CAMPO" type="boolean" minOccurs="0"/>
+                    <element name="RUTA_ANEXO" type="tns:alfanumerico_150" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="Anormalidad">
+                <sequence>
+                    <element name="CODIGO_ANORMALIDAD" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CODIGO_TAREA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="VALOR_REAL_DEL_TRABAJO" type="double" minOccurs="0"/>
+                    <element name="TIENE_COBRO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="MEDIDOR_ASOCIADO" type="tns:alfanumerico_50" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOfAnexo">
+                <sequence>
+                    <element name="item" type="tns:Anexo" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOfAnormalidades">
+                <sequence>
+                    <element name="item" type="tns:Anormalidad" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOfConsumo">
+                <sequence>
+                    <element name="item" type="tns:Consumo" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOfCotizacion">
+                <sequence>
+                    <element name="item" type="tns:Cotizacion" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOfCuentas">
+                <sequence>
+                    <element name="item" type="tns:Cuentas" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOfLectura">
+                <sequence>
+                    <element name="item" type="tns:Lectura" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOfMedidor">
+                <sequence>
+                    <element name="item" type="tns:Medidor" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOfNg">
+                <sequence>
+                    <element name="item" type="tns:Ng" minOccurs="0" maxOccurs="5"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOfObservacionCC">
+                <sequence>
+                    <element name="item" type="tns:ObservacionCC" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOfProductosNC">
+                <sequence>
+                    <element name="item" type="tns:ProductosNC" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOfReparacionDeElectrodomesticos">
+                <sequence>
+                    <element name="item" type="tns:ReparacionDeElectrodomesticos" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOfSello">
+                <sequence>
+                    <element name="item" type="tns:Sello" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOfTareas">
+                <sequence>
+                    <element name="TAREA" type="tns:alfanumerico_50" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOfTransformador">
+                <sequence>
+                    <element name="item" type="tns:Transformador" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOfVinculo">
+                <sequence>
+                    <element name="item" type="tns:Vinculo" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOf_alfanumerico_150">
+                <sequence>
+                    <element name="item" type="tns:alfanumerico_150" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOf_alfanumerico_50">
+                <sequence>
+                    <element name="item" type="tns:alfanumerico_50" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+            <complexType name="Arrayoffactura">
+                <sequence>
+                    <element name="item" type="tns:Factura" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+            <complexType name="Consumo">
+                <all>
+                    <element name="ANOMALIA_DE_LECTURA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_CONSUMO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_HORARIO_CONSUMO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="VALOR_CONSUMO" type="double" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="Cotizacion">
+                <all>
+                    <element name="CANTIDAD_MANO_DE_OBRA" type="double" minOccurs="0"/>
+                    <element name="CANTIDAD_MATERIAL" type="long" minOccurs="0"/>
+                    <element name="CODIGO_ELEMENTO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CODIGO_SUBELEMENTO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NOMBRE_ELEMENTO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NOMBRE_SUBELEMENTO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="VALOR_IVA_MANO_DE_OBRA_NO_BAREMADO" type="double" minOccurs="0"/>
+                    <element name="VALOR_IVA_MATERIAL_NO_BAREMADO" type="double" minOccurs="0"/>
+                    <element name="VALOR_UNITARIO_MANO_DE_OBRA_NO_BAREMADO" type="double" minOccurs="0"/>
+                    <element name="VALOR_UNITARIO_MATERIAL_NO_BAREMADO" type="double" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="CreacionTdC_RequestType">
+                <sequence>
+                    <element name="SOAHeader" type="tipos_comunes:SOAHeaderType"/>
+                    <element name="Request" type="tns:RequestType"/>
+                </sequence>
+            </complexType>
+            <complexType name="CreacionTdC_ResponseType">
+                <sequence>
+                    <element name="SOAHeaderResponse" type="tipos_comunes:SOAHeaderResponseType"/>
+                    <element name="Response" type="tns:ResponseType"/>
+                </sequence>
+            </complexType>
+            <complexType name="Cuentas"> <!--Cambio Chilectra Sequence por All 20170616 -->
+                <all>
+                    <element name="CODIGO_CLIENTE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NOMBRE_CLIENTE" type="tns:alfanumerico_300" minOccurs="0"/>
+                    <element name="TIPO_CLIENTE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="RUTA_DE_LECTURA" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="TEXTO_DIRECCION" type="tns:alfanumerico_300" minOccurs="0"/>
+                    <element name="LATITUD_CLIENTE" type="tns:numerico_10_8" minOccurs="0"/>
+                    <element name="LONGITUD_CLIENTE" type="tns:numerico_10_8" minOccurs="0"/>
+                    <element name="TELEFONO_CONTACTO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CLAVE_TARIFA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="RESTRICCION_DE_CONVENIOS" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="MEDIDOR" type="tns:ArrayOfMedidor" minOccurs="0"/>
+                    <element name="TRANSFORMADOR" type="tns:ArrayOfTransformador" minOccurs="0"/>
+                    <element name="POTENCIA_REQUERIDA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CEDULA_CLIENTE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="EMAIL_CONTACTO_CON_EL_CLIENTE" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="TIPO_DOCUMENTO_IDENTIDAD" type="tns:alfanumerico_50" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="DatosClaveProcesosTDC">
+                <all>
+                    <element name="CODIGO_DISTRIBUIDORA" type="tns:alfanumerico_50"/>
+                    <element name="CODIGO_EXTERNO_DEL_TDC" type="tns:alfanumerico_50"/>
+                    <element name="CODIGO_PROCESO" type="tns:alfanumerico_50"/>
+                    <element name="CODIGO_SISTEMA_EXTERNO_DE_ORIGEN" type="tns:alfanumerico_50"/>
+                    <element name="CODIGO_SUBPROCESO" type="tns:alfanumerico_50"/>
+                    <element name="CODIGO_TIPO_DE_TDC" type="tns:alfanumerico_50"/>
+                    <element name="LLAVE_SECRETA" type="tns:alfanumerico_50"/>
+                </all>
+            </complexType>
+            <complexType name="DatosComunesProcesosTDC">
+                <all>
+                    <element name="ANEXOS" type="tns:ArrayOfAnexo" minOccurs="0"/>
+                    <element name="CENTRO_OPERATIVO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CODIGO_CITA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CODIGO_DEL_AVISO" type="long" minOccurs="0"/>
+                    <element name="CODIGO_ORDEN_PADRE" type="long" minOccurs="0"/>
+                    <element name="CONSUMOS" type="tns:ArrayOfConsumo" minOccurs="0"/>
+                    <element name="EMPRESA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="FECHA_DE_VENCIMIENTO_PARA_ANS_CONTRACTISTA" type="dateTime" minOccurs="0"/>
+                    <element name="FECHA_DE_VENCIMIENTO_PARA_ANS_INTERNO" type="dateTime" minOccurs="0"/>
+                    <element name="FECHA_DE_VENCIMIENTO_PARA_ANS_LEGAL" type="dateTime" minOccurs="0"/>
+                    <element name="FECHA_Y_HORA_DE_CREACION_DE_LA_ORDEN" type="dateTime" minOccurs="0"/>
+                    <element name="FECHA_Y_HORA_FIN_CITA_CONCERTADA_EN_CAMPO" type="dateTime" minOccurs="0"/>
+                    <element name="FECHA_Y_HORA_INICIO_CITA_CONCERTADA_EN_CAMPO" type="dateTime" minOccurs="0"/>
+                    <element name="MEDIDORS" type="tns:ArrayOfMedidor" minOccurs="0"/>
+                    <element name="NOMBRE_TDC_HOMOLOGADO" type="tns:alfanumerico_300" minOccurs="0"/>
+                    <element name="NOMBRE_TDC_PRE_HOMOLOGACION" type="tns:alfanumerico_300" minOccurs="0"/>
+                    <element name="NUMERO_PROTOCOLO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="OBSERVACIONES" type="tns:alfanumerico_2000" minOccurs="0"/>
+                    <element name="PARAMETRO_NIVEL_OPERATIVO_3" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="PRIMERA_FECHA_UTIL" type="dateTime" minOccurs="0"/>
+                    <element name="SECTOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="SELLOS" type="tns:ArrayOfSello" minOccurs="0"/>
+                    <element name="SUMINSTROS" type="tns:Suministro" minOccurs="0"/>
+                    <element name="TIEMPO_DE_REFERENCIA_PARA_ANS_CONTRACTISTA" type="dateTime" minOccurs="0"/>
+                    <element name="TIEMPO_DE_REFERENCIA_PARA_ANS_INTERNO" type="dateTime" minOccurs="0"/>
+                    <element name="TIEMPO_DE_REFERENCIA_PARA_ANS_LEGAL" type="dateTime" minOccurs="0"/>
+                    <element name="TIPO_DE_RED" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_REMESSA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="VALOR_ANS_CONTRACTISTA" type="long" minOccurs="0"/>
+                    <element name="VALOR_ANS_INTERNO" type="long" minOccurs="0"/>
+                    <element name="VALOR_ANS_LEGAL" type="long" minOccurs="0"/>
+                    <element name="VALOR_NIVEL_OPERATIVO_3" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ZONA" type="tns:alfanumerico_50" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="Factura">
+                <sequence>
+                    <element name="MES_ANO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_FACTURA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="INDICATIVO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="VALOR_DE_LA_FACTURA" type="tns:alfanumerico_50" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <complexType name="GestionDesarolloCommercialUrgenciasInternas">
+                <all>
+                    <element name="NUMERO_AIC" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="XML_EXTENSION_PARAMS" type="string" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="GestionDesarolloCommercialVentasPorSolicitudCliente">
+                <all>
+                    <element name="CANTIDAD_DE_PRODUCTOS_A_INSTALAR" type="long" minOccurs="0"/>
+                    <element name="CARGA_INSTALADA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CD" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CLIENTE_EN_CALIDAD_DE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="FECHA_DE_LA_SOLICITUD" type="dateTime" minOccurs="0"/>
+                    <element name="FORMA_DE_PAGO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NOMBRE_Y_APELLIDO_CLIENTE_2" type="tns:alfanumerico_300" minOccurs="0"/>
+                    <element name="NUMERO_DOCUMENTO_IDENTIDAD" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NUMERO_ORDEN" type="long" minOccurs="0"/>
+                    <element name="NUMERO_VENTA" type="long" minOccurs="0"/>
+                    <element name="PRESUPUESTO_O_COTIZACION" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="PRODUCTO_VENTAS" type="tns:alfanumerico_300" minOccurs="0"/>
+                    <element name="PUNTO_DE_VENTA" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="RADICADO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="REPARACION_DE_ELECTRODOMESTICOS" type="tns:ArrayOfReparacionDeElectrodomesticos" minOccurs="0"/>
+                    <element name="SUB_ZONA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TELEFONO_CELULAR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DOCUMENTO_IDENTIDAD" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_SOLICITUD_VENTAS" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_VIVIENDA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="XML_EXTENSION_PARAMS" type="string" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="GestionFiscalizacionEnFrio">
+                <all>
+                    <element name="BUZON_O_ROL" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="CANAL_DE_ENTRADA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CANTIDAD_DE_MEDIDORES" type="long" minOccurs="0"/>
+                    <element name="CLAVE_LECTURA" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="CODIGO_DEL_TIPO_TDC_HOMOLOGADO_A_FISCALIZAR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CODIGO_DISTRIBUIDORA_TDC_A_FISCALIZAR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CODIGO_EXTERNO_DEL_TDC_A_FISCALIZAR" type="long" minOccurs="0"/>
+                    <element name="CODIGO_SISTEMA_EXTERNO_DE_ORIGEN_TDC_A_FISCALIZAR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="LECTURA" type="double" minOccurs="0"/>
+                    <element name="MOTIVO_CLIENTE" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="MOTIVO_EMPRESA" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="PROCESO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_ACTIVIDAD" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_ATENCION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="XML_EXTENSION_PARAMS" type="string" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="GestionImpagosCobranza">
+                <all>
+                    <element name="ASIGNACIONES" type="tns:alfanumerico_255" minOccurs="0"/>
+                    <element name="CAPACIDAD_DE_PROTECCION_DEL_EMPALME" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CARTERA_MOROSA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="DIRECCION_OTRAS_VISITAS" type="tns:alfanumerico_255" minOccurs="0"/>
+                    <element name="ENTREGA_NUMERO" type="tns:alfanumerico_255" minOccurs="0"/>
+                    <element name="FECHA_DE_ASIGNACION" type="dateTime" minOccurs="0"/>
+                    <element name="FECHA_DE_RETIRO" type="dateTime" minOccurs="0"/>
+                    <element name="FECHA_VENCIMIENTO_ULTIMA_FACTURA" type="dateTime" minOccurs="0"/>
+                    <element name="GRUPO_DE_LA_CUENTA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ID" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NUMERO_DE_CUENTA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NUMERO_DOCUMENTO_IDENTIDAD" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_CARTA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_CARTERA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DOCUMENTO_IDENTIDAD" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ULTIMA_LECTURA_FACTURADA" type="double" minOccurs="0"/>
+                    <element name="XML_EXTENSION_PARAMS" type="string" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="GestionImpagosSCR">
+                <all>
+                    <element name="BLUETOOTH" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CAPACIDAD_DE_PROTECCION_DEL_EMPALME" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CLAVE_DE_LECTURA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CLIENTE_VITAL" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CODIGO_COLOR_CAJA_TEXTO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CODIGO_DE_BARRAS" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="CODIGO_PLAN_DE_TERRENO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CODIGO_ZONA_PELIGROSA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CONTRATISTA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="DEUDAS_ALTAS" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="DEUDA_CORTE" type="double" minOccurs="0"/>
+                    <element name="EM_TUS_MANOS" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ESTADO_CONEXION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="FASE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="FECHA_GENERACION" type="dateTime" minOccurs="0"/>
+                    <element name="FLAG_TIENE_CONVENIO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ID_DISPLAY_MEDIDOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="LECTURA_DISPLAY_MEDIDOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="LISTADO_FACTURA" type="tns:Arrayoffactura" minOccurs="0"/>
+                    <element name="MARCA_DISPLAY_MEDIDOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="MODELO_DISPLAY_MEDIDOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="MOTIVO_DEL_CORTE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="MOTIVO_DE_LA_RECONEXION" type="tns:alfanumerico_255" minOccurs="0"/>
+                    <element name="NUMERO_DISPLAY_MEDIDOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NUMERO_TRANSFORMADOR_DISTRIBUCION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="PROCESO_DE_CORTE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="PUNTO_DE_CORTE_Y_RECO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="RADIOFRECUENCIA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="RANKING" type="long" minOccurs="0"/>
+                    <element name="REFACTURACION" type="tns:alfanumerico_255" minOccurs="0"/>
+                    <element name="REPROGRAMADA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="SECTOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="SEGMENTO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="SUBTIPO_DE_CORTE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="SUBTIPO_DE_ORDEN" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DEUDA_CORTE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_CAJA_MEDICION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_CAJA_TOMA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_CONEXION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_CORTE_Y_RECO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_ORDEN" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_RECO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_TENSION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_ZONA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ULTIMA_ACCION_EFECTIVA" type="tns:alfanumerico_255" minOccurs="0"/>
+                    <element name="VALOR_PRODUCTO_EN_TUS_MANOS" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="VALOR_RECONEXION" type="double" minOccurs="0"/>
+                    <element name="XML_EXTENSION_PARAMS" type="string" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="GestionNuevasConexiones">
+                <all>
+                    <element name="ALIMENTADOR" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="ATENCION_DE_EMERGENCIA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CAMBIA_MEDIDOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CANTIDAD_SUMINISTRO" type="long" minOccurs="0"/>
+                    <element name="CAPACIDAD_CONTRATADA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CAPACIDAD_DEL_EMPALME" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CAPACIDAD_DEL_TRANSFORMADOR" type="double" minOccurs="0"/>
+                    <element name="CAPACIDAD_DE_PROTECCION_DEL_EMPALME" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CENTRO_OPERATIVO_ACT" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CLASE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CODIGO_AGRUPAMIENTO" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="CODIGO_DE_TIPIFICACION_DE_OSINERGMIN" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CODIGO_PUNTO_INSPECCIONADO" type="long" minOccurs="0"/>
+                    <element name="COMPLEJIDAD_DE_LA_TAREA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CONCENTRADOR_PRIMARIO" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="CONCENTRADOR_SECONDARIO" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="CONSTANTE" type="double" minOccurs="0"/>
+                    <element name="CORRECCION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="COTIZACIONS" type="tns:ArrayOfCotizacion" minOccurs="0"/>
+                    <element name="CUENTAS" type="tns:ArrayOfCuentas" minOccurs="0"/>
+                    <element name="DATO_TECNICO_PRC" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="DEFICIENCIA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="DESCRICAO_ETAPA_TIPO_SERVICIO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="DESCRICAO_RETORNO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="DESCRIPCION_DE_TIPIFICACION_DE_OSINERGMIN" type="tns:alfanumerico_255" minOccurs="0"/>
+                    <element name="DESCRIPCION_TIPO_SERVICIO" type="tns:alfanumerico_300" minOccurs="0"/>
+                    <element name="DV_RUT" type="tns:alfanumerico_1" minOccurs="0"/>
+                    <element name="EMAIL_DE_CONTACTO_CON_EL_CLIENTE" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="FAIXA_DE_CARGA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="FASE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="FECHA_PAGO" type="dateTime" minOccurs="0"/>
+                    <element name="FLAG_REFORMA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="GRUPO_PRODUCTO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ID_DISPLAY" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="IVA" type="double" minOccurs="0"/>
+                    <element name="LECTURA_DISPLAY" type="double" minOccurs="0"/>
+                    <element name="LLAVE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="MARCA_DISPLAY" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="MEDIDOR_VECINO_DER" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="MEDIDOR_VECINO_IZQ" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="METROS_PARA_CALCULO_DURACION" type="long" minOccurs="0"/>
+                    <element name="MODELO_DISPLAY" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="MOTIVO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="MOTIVO_DE_VENTA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NO_CLIENTE_VECINO_DER" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NO_CLIENTE_VECINO_IZQ" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NRO_DE_DEFICIENCIA_OSINERGMIN" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NUMERO_DISPLAY" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NUMERO_DOCUMENTO_IDENTIDAD" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NUMERO_GRUPO" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="NUMERO_ORDEN_DE_SERVICIO" type="tns:ArrayOf_alfanumerico_50" minOccurs="0"/>
+                    <element name="NUMERO_SERIE_CS" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="NUMERO_SOLICITUD" type="long" minOccurs="0"/>
+                    <element name="OBRA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="OBSERVACIONCC" type="tns:ArrayOfObservacionCC" minOccurs="0"/>
+                    <element name="POSICION_MEDIDOR_CONCENTRADOR_PS1" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="POSICION_MEDIDOR_CONCENTRADOR_PS2" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="POSICION_MEDIDOR_CONCENTRADOR_PS3" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="POTENCIA_REQUERIDA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="PRODUCTOSNC" type="tns:ArrayOfProductosNC" minOccurs="0"/>
+                    <element name="PROMEDIO_DE_CONSUMO" type="double" minOccurs="0"/>
+                    <element name="REP_DE_PAVIMENTOS" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="RESTRICCION_DE_CONVENIOS" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="SET" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="SHUNT1" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="SHUNT2" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="SHUNT3" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="SUBCLASE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="SUBTIPO_DE_ORDEN" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TARIFA_SOLICITADA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TASA_DE_INTERES" type="double" minOccurs="0"/>
+                    <element name="TASA_INTERES_CONNEXION" type="double" minOccurs="0"/>
+                    <element name="TEMA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_ACOMETIDA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_ARRANQUE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_CAJA_MEDICION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_CAJA_TOMA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_CONEXION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_EMPALME" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_INSTALACION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_SERVICIO_TEMPORAL" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_VERIFICACION_COMERCIAL" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DOCUMENTO_IDENTIDAD" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_MEDIDA_CONEXION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_OBRA_CIVIL" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_PROTECCION_DEL_EMPALME" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_SOLICITUD" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_TENSION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TRABAJO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TRANSFORMADOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="USUARIO_CREADOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="VALADIC" type="tns:ArrayOf_alfanumerico_150" minOccurs="0"/>
+                    <element name="VALOR_DEL_KILOWATT" type="double" minOccurs="0"/>
+                    <element name="VALOR_TOTAL_MANO_DE_OBRA" type="double" minOccurs="0"/>
+                    <element name="VALOR_TOTAL_MATERIAL" type="double" minOccurs="0"/>
+                    <element name="VALOR_TOTAL_OFERTA_COMERCIALE" type="double" minOccurs="0"/>
+                    <element name="VALOR_UF" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="VENTA_DE_PADRAO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="XML_EXTENSION_PARAMS" type="string" minOccurs="0"/>
+                    <element name="ID_RELACION" type="long" minOccurs="0"/><!-- Nuevo Campo Chile 20171218-->
+                    <element name="NOMBRE_TD" type="tns:alfanumerico_50" minOccurs="0"/><!-- Nuevo Campo Chile 20180111-->
+                    <element name="PROPIEDAD_DEL_MEDIDOR" type="tns:alfanumerico_50" minOccurs="0"/><!-- Nuevo Campo Chile 20180111-->
+                    <element name="TIPO_RED_D" type="tns:alfanumerico_50" minOccurs="0"/><!-- Nuevo Campo Chile 20180111-->	
+                </all>
+            </complexType>
+            <complexType name="GestionPerdidasInspecciones">
+                <all>
+                    <element name="ACTIVIDAD_COMERCIAL" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ALIMENTADOR" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="AREA_EMISORA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CAJA_EMPALME" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CANTIDAD_DE_SERVICIOS_ELECTRICOS" type="long" minOccurs="0"/>
+                    <element name="CANTIDAD_DE_SUMINISTROS_POR_SED" type="long" minOccurs="0"/>
+                    <element name="CAPACIDAD_CONTRATADA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CAPACIDAD_DEL_TRANSFORMADOR" type="double" minOccurs="0"/>
+                    <element name="CAPACIDAD_DEL_TRANSFORMADOR_DE_POTENCIA" type="double" minOccurs="0"/>
+                    <element name="CAPACIDAD_DE_PROTECCION_DEL_EMPALME" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CAPACIDAD_EMPALME" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CENTRO_DE_DISTRIBUCION" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="CICLO_DEL_TRANSFORMADOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CIRCUITO" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="CLASSE" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="CONCENTRADOR_PRIMARIO" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="CONCENTRADOR_SECONDARIO" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="CONDUCTOR_EMPALME" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="DATA_TOI1" type="dateTime" minOccurs="0"/>
+                    <element name="DATA_TOI2" type="dateTime" minOccurs="0"/>
+                    <element name="DATA_TOI3" type="dateTime" minOccurs="0"/>
+                    <element name="FRANJA_TIPO_DE_SELECAO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="IRREGULARIDAD" type="tns:ArrayOf_alfanumerico_50" minOccurs="0"/>
+                    <element name="LATITUD_DEL_TRANSFORMADOR" type="tns:numerico_10_8" minOccurs="0"/>
+                    <element name="LISTA_TAREAS_A_REALIZAR" type="tns:ArrayOf_alfanumerico_50" minOccurs="0"/>
+                    <element name="LLAVE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="LONGITUD_DEL_TRANSFORMADOR" type="tns:numerico_10_8" minOccurs="0"/>
+                    <element name="MEDIDA_TECNICA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NIVEL_DE_TENSION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NOMBRE_CIRCUITO" type="tns:alfanumerico_300" minOccurs="0"/>
+                    <element name="NOMBRE_SED" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NUMERO_CAIXA" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="NUMERO_DE_DISPLAY" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NUMERO_DE_LA_ORDEN_DE_MACRO" type="long" minOccurs="0"/>
+                    <element name="NUMERO_PROCESO_MASIVO" type="long" minOccurs="0"/>
+                    <element name="NUMERO_TAMPA_CAIXA" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="ORIGEN_DE_CONTRASTE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ORIGEN_DE_LA_INSPECCION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="PORCENTAJE_DE_CONSUMO_COMERCIAL" type="double" minOccurs="0"/>
+                    <element name="PORCENTAJE_DE_CONSUMO_INDUSTRIAL" type="double" minOccurs="0"/>
+                    <element name="PORCENTAJE_DE_CONSUMO_OFICIAL" type="double" minOccurs="0"/>
+                    <element name="PORCENTAJE_DE_CONSUMO_RESIDENCIAL" type="double" minOccurs="0"/>
+                    <element name="PORCENTAJE_DE_CONSUMO_TRAFO" type="double" minOccurs="0"/>
+                    <element name="POSICION_MEDIDOR_PS1" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="POTENCIA_CONTRATADA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="POTENCIA_CONTRATADA_FUERA_PUNTA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="POTENCIA_CONTRATADA_HORA_PUNTA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="PRODUCTO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="PROGRAMADO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="PROMEDIO_DE_CONSUMO" type="double" minOccurs="0"/>
+                    <element name="PUNTO_FISICO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="SET" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="SUMINISTROS_INSPECCIONES" type="tns:SuministroInspecciones" minOccurs="0"/>
+                    <element name="TAREA_A_REALIZAR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_ACOMETIDA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_AGRUPAMIENTO_DE_PROPIEDAD_INSPECCIONADA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_BARRIO_DE_PROPIEDAD_INSPECCIONADA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_CLIENTE_SERVICIO_REFERENCIA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_CAJA_MEDICION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_CAJA_TOMA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_CONEXION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_EJECUCION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_EMPALME" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_INSPECCION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_MEDICION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_SELECAO" type="tns:alfanumerico_255" minOccurs="0"/>
+                    <element name="TIPO_DO_SERVICO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_FAMILIA_DE_PROPIEDAD_INSPECCIONADA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_MEDIDA_CONEXION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_PROTECCION_DEL_EMPALME" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_RESIDENTE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_VIVIENDA_DE_PROPIEDAD_INSPECCIONADA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TOI1" type="long" minOccurs="0"/>
+                    <element name="TOI2" type="long" minOccurs="0"/>
+                    <element name="TOI3" type="long" minOccurs="0"/>
+                    <element name="TRANSFORMADOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TRANSFORMADORS_CORRIENTE" type="tns:ArrayOfTransformador" minOccurs="0"/>
+                    <element name="TRANSFORMADORS_TENSION" type="tns:ArrayOfTransformador" minOccurs="0"/>
+                    <element name="UBICACION_DE_LA_MEDIDA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="UBICACION_SED" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="VINCULOS" type="tns:ArrayOfVinculo" minOccurs="0"/>
+                    <element name="VOLTAJE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="XML_EXTENSION_PARAMS" type="string" minOccurs="0"/>
+                    <element name="TIPO_DE_USO" type="tns:alfanumerico_50" minOccurs="0"/><!-- Nuevo campo Chilectra 20170621-->
+                </all>
+            </complexType>
+            <complexType name="GestionPerdidasNormalizaciones">
+                <all>
+                    <element name="ALIMENTADOR" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="ANORMALIDAD" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="AREA_EMISORA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ARRAY_DE_TAREAS" type="tns:ArrayOfTareas" minOccurs="0"/>
+                    <element name="CAJA_EMPALME" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CANTIDAD_MEDIDORES" type="long" minOccurs="0"/>
+                    <element name="CAPACIDAD_CONTRATADA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CAPACIDAD_DEL_TRANSFORMADOR" type="double" minOccurs="0"/>
+                    <element name="CAPACIDAD_DE_PROTECCION_DEL_EMPALME" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CAPACIDAD_EMPALME" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CENTRO_DE_COSTO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CENTRO_DE_DISTRIBUCION" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="CICLO_NG" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CLASSE" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="CONDUCTOR_EMPALME" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CONTRATISTA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CORREO_EMAIL" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="CUENTA" type="long" minOccurs="0"/>
+                    <element name="ESTADO_CLIENTE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ESTADO_CONEXION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ESTRATO_SOCIO_ECONOMICO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="FASE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="FONO_PERSONA_COORDINACION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="LISTADO_NG" type="tns:ArrayOfNg" minOccurs="0"/>
+                    <element name="LISTA_ANORMALIDADES" type="tns:ArrayOfAnormalidades" minOccurs="0"/>
+                    <element name="LLAVE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="MEDIDA_TECNICA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NIVEL_DE_TENSION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NOMBRE_PERSONA_COORDINACION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NO_DE_ACTA_DE_INTERVENCION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NUMERO_CAIXA" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="NUMERO_PROCESO_MASIVO" type="long" minOccurs="0"/>
+                    <element name="NUMERO_TAMPA_CAIXA" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="PROCEDENCIA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="PRODUCTO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="PROPIEDAD_TRANSFORMADOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="PUNTO_FISICO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="RELACION_TRANSFORMADOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="REQUIERE_RADICADO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="SET" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="TAREA_DECISORIA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_ACOMETIDA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_ANOMALIA" type="tns:ArrayOf_alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_CAJA_MEDICION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_CAJA_TOMA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_CONEXION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_EMPALME" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_SELECAO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DO_SERVICO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_MEDIDA_CONEXION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_PROTECCION_DEL_EMPALME" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_SOLICITUD_NORMALIZACION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TOI1" type="long" minOccurs="0"/>
+                    <element name="TRANSFORMADOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TRANSFORMADORS_CORRIENTE" type="tns:ArrayOfTransformador" minOccurs="0"/>
+                    <element name="TRANSFORMADORS_TENSION" type="tns:ArrayOfTransformador" minOccurs="0"/>
+                    <element name="UBICACION_DE_LA_MEDIDA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="VOLTAJE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="XML_EXTENSION_PARAMS" type="string" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="Lectura">
+                <all>
+                    <element name="ANOMALIA_DE_FACTURACION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ANOMALIA_DE_LECTURA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="FECHA_EVENTOS_LECTURA" type="dateTime" minOccurs="0"/>
+                    <element name="TIPO_HORARIO_LECTURA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_LECTURA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="VALOR_CONSUMO_FACTURADO" type="double" minOccurs="0"/>
+                    <element name="VALOR_CONSUMO_LEIDO" type="double" minOccurs="0"/>
+                    <element name="VALOR_LECTURA" type="double" minOccurs="0"/>
+                    <element name="CLAVE_DE_LECTURA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CPDANTERIOR_DUDOSO" type="double" minOccurs="0"/>
+                    <element name="PORCE_BAJA_DUDOSO" type="double" minOccurs="0"/>
+                    <element name="PORCE_ALZA_DUDOSO" type="double" minOccurs="0"/>
+                    <element name="PISO_DUDOSO" type="double" minOccurs="0"/>
+                    <element name="CONSTANTE" type="long" minOccurs="0"/><!-- Nuevo Campo Chilectra 20170621-->
+                    <element name="ENTEROS" type="long" minOccurs="0"/><!-- Nuevo Campo Chilectra 20170926-->
+                    <element name="DECIMALES" type="long" minOccurs="0"/><!-- Nuevo Campo Chilectra 20170926-->
+                </all>
+            </complexType>
+            <complexType name="Medidor">
+                <all>
+                    <element name="AMPERAJE_MEDIDOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ANO_FABRICACION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CAPACIDAD_MEDIDOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CATEGORIA_MARCA_MEDIDOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CLASE_DEL_MEDIDOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CLASE_FACTOR_DE_FACTURACION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="DIGITOS_DECIMALES" type="long" minOccurs="0"/>
+                    <element name="FACTOR_DE_FACTURACION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="FECHA_INSTALACION_MEDIDOR" type="dateTime" minOccurs="0"/>
+                    <element name="LECTURAS" type="tns:ArrayOfLectura" minOccurs="0"/>
+                    <element name="MARCA_MEDIDOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="MODELO_MEDIDOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NUMERO_DE_FABRICA_DEL_MEDIDOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NUMERO_DE_VUELTAS" type="double" minOccurs="0"/>
+                    <element name="NUMERO_DIGITOS_MEDIDOR" type="long" minOccurs="0"/>
+                    <element name="NUMERO_MEDIDOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ORIGEN_DE_MEDIDOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="PROPIEDAD_DEL_MEDIDOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_MEDIDA_CONEXION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_MEDIDOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_REGISTRADOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_TECNOLOGIA" type="tns:alfanumerico_255" minOccurs="0"/>
+                    <element name="UBICACION_DEL_MEDIDOR" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="UNIDAD_MEDIDA_KC" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="VALOR_TENSION_NOMINAL" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CARACTERISTICA_MEDIDOR_PRINCIPAL" type="tns:alfanumerico_50" minOccurs="0"/><!-- Nuevo Campo Chilectra 20170926-->
+                </all>
+            </complexType>
+            <complexType name="Ng">
+                <sequence>
+                    <element name="CODIGO_NG" type="tns:alfanumerico_50" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <complexType name="ObservacionCC">
+                <sequence>
+                    <element name="CORRELATIVO_OBSERVACION" type="long" minOccurs="0"/>
+                    <element name="FECHA_INGRESO_OBSERVACION" type="dateTime" minOccurs="0"/>
+                    <element name="AUTOR_OBSERVACION_CC" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="OBSERVACIONES_CC" type="tns:alfanumerico_300" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <complexType name="ProductosNC">
+                <sequence>
+                    <element name="CODIGO_PRODUCTO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="VALOR_PRODUCTO" type="double" minOccurs="0"/>
+                    <element name="CANTIDAD_PRODUCTO" type="long" minOccurs="0"/>
+                    <element name="TIPO_PRODUCTO" type="tns:alfanumerico_50" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <complexType name="ReparacionDeElectrodomesticos">
+                <all>
+                    <element name="ELECTRODOMESTICO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="MARCA_ELECTRODOMESTICO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="OBSERVACIONES_REPARACION" type="tns:alfanumerico_300" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="RequestType">
+                <sequence>
+                    <element name="DATOS_CLAVE_PROCESOS_TDC" type="tns:DatosClaveProcesosTDC"/>
+                    <element name="DATOS_COMUNES_PROCESOS_TDC" type="tns:DatosComunesProcesosTDC"/>
+                    <choice>
+                        <element name="GESTION_DESAROLLO_COMMERCIAL_URGENCIAS_INTERNAS" type="tns:GestionDesarolloCommercialUrgenciasInternas" minOccurs="0"/>
+                        <element name="GESTION_DESAROLLO_COMMERCIAL_VENTAS_POR_SOLICITUD_CLIENTE" type="tns:GestionDesarolloCommercialVentasPorSolicitudCliente" minOccurs="0"/>
+                        <element name="GESTION_FISCALIZACION_EN_FRIO" type="tns:GestionFiscalizacionEnFrio" minOccurs="0"/>
+                        <element name="GESTION_IMPAGOS_COBRANZA" type="tns:GestionImpagosCobranza" minOccurs="0"/>
+                        <element name="GESTION_IMPAGOS_SCR" type="tns:GestionImpagosSCR" minOccurs="0"/>
+                        <element name="GESTION_NUEVAS_CONEXIONES" type="tns:GestionNuevasConexiones" minOccurs="0"/>
+                        <element name="GESTION_PERDIDAS_INSPECCIONES" type="tns:GestionPerdidasInspecciones" minOccurs="0"/>
+                        <element name="GESTION_PERDIDAS_NORMALIZACIONES" type="tns:GestionPerdidasNormalizaciones" minOccurs="0"/>
+                        <element name="GESTION_PERDIDAS_SMARTMETER" type="tns:GestionPerdidasSmartMeter" minOccurs="0"/>
+                    </choice>
+                </sequence>
+            </complexType>
+            <complexType name="ResponseType">
+                <all>
+                    <element name="CODIGO_DEL_RESULTADO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CODIGO_INTERNO_DEL_TDC" type="long" minOccurs="0"/>
+                    <element name="DESCRIPCION_DEL_RESULTADO" type="tns:alfanumerico_255" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="Sello">
+                <all>
+                    <element name="COLOR_DEL_SELLO" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="ESTADO_DEL_SELLO" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="PADRAO_FABRICANTE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="SELLOS_EN_SISTEMA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_SELLO" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="UBICACION_DEL_SELLO" type="tns:alfanumerico_150" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="Suministro">
+                <all>
+                    <element name="AGRUPACION" type="tns:alfanumerico_300" minOccurs="0"/>
+                    <element name="ANTIGUEDAD" type="long" minOccurs="0"/>
+                    <element name="CLAVE_TARIFA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CODIGO_CLIENTE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CODIGO_POSTAL" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CODIGO_TIPO_CLIENTE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="COD_CARDINAL_CRUCE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="COD_CARDINAL_VIA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="COD_CLASE_DE_VIA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="COD_LETRA_CRUCE_DIRECCION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="COD_LETRA_VIA_DIRECCION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="COD_MODALIDAD_UNIDAD_PREDIAL" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="COD_NOMBRE_VIA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="COD_TIPO_UNIDAD_PREDIAL" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="COD_UNIDAD_PREDIAL" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="DEUDA" type="double" minOccurs="0"/>
+                    <element name="GIRO_DE_NEGOCIO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ID_COD_BARRIO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ID_COD_MUNICIPIO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="INDICADOR_D_DIRECCION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="LATITUD_CLIENTE" type="tns:numerico_10_8" minOccurs="0"/>
+                    <element name="LOCALIDAD" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="LOCALIZACION_TERRENO" type="tns:alfanumerico_255" minOccurs="0"/>
+                    <element name="LONGITUD_CLIENTE" type="tns:numerico_10_8" minOccurs="0"/>
+                    <element name="LOTE" type="tns:alfanumerico_255" minOccurs="0"/>
+                    <element name="MANZANA" type="tns:alfanumerico_255" minOccurs="0"/>
+                    <element name="NOMBRE_Y_APELLIDO_CLIENTE" type="tns:alfanumerico_300" minOccurs="0"/>
+                    <element name="NUMERO_CRUCE_DIRECCION" type="tns:alfanumerico_300" minOccurs="0"/>
+                    <element name="NUMERO_PLACA_DIRECCION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NUMERO_VIA_DIRECCION" type="tns:alfanumerico_300" minOccurs="0"/>
+                    <element name="NUM_MODALIDAD_UNIDAD_PREDIAL" type="tns:alfanumerico_255" minOccurs="0"/>
+                    <element name="NUM_TIPO_UNIDAD_PREDIAL" type="tns:alfanumerico_255" minOccurs="0"/>
+                    <element name="NUM_UNIDAD_PREDIAL" type="tns:alfanumerico_255" minOccurs="0"/>
+                    <element name="PISO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="PROVINCIA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="RUTA_DE_LECTURA" type="tns:alfanumerico_150" minOccurs="0"/>
+                    <element name="SUBCLASE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="SUCURSAL" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TARIFA_EXISTENTE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TELEFONO_CONTACTO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TEXTO_DIRECCION" type="tns:alfanumerico_300" minOccurs="0"/>
+                    <element name="TIPO_AGRUPACION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_VIA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="UPZ" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ESTADO_CONEXION" type="tns:alfanumerico_50" minOccurs="0"/><!-- Nuevo campo Chilectra 20170926-->
+                    <element name="NOMBRE_SOLICITANTE" minOccurs="0" type="tns:alfanumerico_200"/><!-- Nuevo campo Chilectra 20171127 -->
+                    <element name="TELEFONO_SOLICITANTE" minOccurs="0" type="tns:alfanumerico_15"/><!-- Nuevo campo Chilectra 20171127 -->
+                </all>
+            </complexType>
+            <complexType name="SuministroInspecciones">
+                <all>
+                    <element name="CODIGO_CLIENTE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CUENTA" type="long" minOccurs="0"/>
+                    <element name="DESCRIPCION_IRREGULARIDAD" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ESTADO_CLIENTE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ESTADO_CONEXION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ESTRATO_SOCIO_ECONOMICO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="FASE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="FECHA_DE_IRREGULARIDAD" type="dateTime" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="Transformador">
+                <all>
+                    <element name="CATEGORIA_MARCA_TRANSFORMADOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="FASE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="MARCA_TRANSFORMADOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="MODELO_TRANSFORMADOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NUMERO_TRANSFORMADOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="RELACION_TRANSFORMADOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="Vinculo">
+                <all>
+                    <element name="CODIGO_CLIENTE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="COD_CARDINAL_CRUCE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="COD_CARDINAL_VIA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="COD_CLASE_DE_VIA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="COD_LETRA_CRUCE_DIRECCION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="COD_LETRA_VIA_DIRECCION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="COD_MODALIDAD_UNIDAD_PREDIAL" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="COD_NOMBRE_VIA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="COD_TIPO_UNIDAD_PREDIAL" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="COD_UNIDAD_PREDIAL" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ESTRATO_SOCIO_ECONOMICO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="FASE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ID_COD_BARRIO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="ID_COD_MUNICIPIO" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="INDICADOR_D_DIRECCION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="LATITUD_CLIENTE" type="tns:numerico_10_8" minOccurs="0"/>
+                    <element name="LOCALIDAD" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="LOCALIZACION_TERRENO" type="tns:alfanumerico_255" minOccurs="0"/>
+                    <element name="LONGITUD_CLIENTE" type="tns:numerico_10_8" minOccurs="0"/>
+                    <element name="MEDIDOR" type="tns:Medidor" minOccurs="0"/>
+                    <element name="NUMERO_CRUCE_DIRECCION" type="tns:alfanumerico_300" minOccurs="0"/>
+                    <element name="NUMERO_PLACA_DIRECCION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NUMERO_VIA_DIRECCION" type="tns:alfanumerico_300" minOccurs="0"/>
+                    <element name="NUM_MODALIDAD_UNIDAD_PREDIAL" type="tns:alfanumerico_255" minOccurs="0"/>
+                    <element name="NUM_TIPO_UNIDAD_PREDIAL" type="tns:alfanumerico_255" minOccurs="0"/>
+                    <element name="NUM_UNIDAD_PREDIAL" type="tns:alfanumerico_255" minOccurs="0"/>
+                    <element name="SECTOR" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TEXTO_DIRECCION" type="tns:alfanumerico_300" minOccurs="0"/>
+                    <element name="TIPO_VIA" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="UPZ" type="tns:alfanumerico_50" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="GestionPerdidasSmartMeter">
+                <sequence>
+                    <element name="TIPO_MEDIDA_CONEXION" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="FASE" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NUMERO_TD" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="NOMBRE_TD" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="LATITUD_TD" type="tns:numerico_10_8" minOccurs="0"/>
+                    <element name="LONGITUD_TD" type="tns:numerico_10_8" minOccurs="0"/>
+                    <element name="COMUNA_TD" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="TIPO_DE_INSTALACION_TD" type="tns:alfanumerico_50" minOccurs="0"/>
+                    <element name="CAPACIDAD_TD" type="double" minOccurs="0"/>
+                    <element name="VINCULOS" maxOccurs="1" minOccurs="0" type="tns:ArrayOfVinculo"/><!-- Nuevo Campo Chile 20171218 -->
+                    <element name="COMPONENTE_CAJA" maxOccurs="1" minOccurs="0" type="tns:componente_caja"/><!-- Nuevo Campo Chile 20171218 -->
+                    <element name="COMPONENTE_SIMCARD" maxOccurs="1" minOccurs="0" type="tns:componente_simcard"/><!-- Nuevo Campo Chile 20171218 -->
+                    <element name="COMPONENTE_MODEM" maxOccurs="1" minOccurs="0" type="tns:componente_modem"/><!-- Nuevo Campo Chile 20171218 -->
+                    <element name="COMPONENTE_CONCENTRADOR" maxOccurs="1" minOccurs="0" type="tns:componente_concentrador"/><!-- Nuevo Campo Chile 20171218 -->
+                </sequence>
+            </complexType>
+			
+			<complexType name="datos_fallaType"><!-- Nuevo Campo Chile 20171218 -->
+                <sequence>
+                    <element name="FALLA" minOccurs="0" type="tns:alfanumerico_50"/>
+                    <element name="TIPO_FALLA" minOccurs="0" type="tns:alfanumerico_50"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayofDatosFalla"><!-- Nuevo Campo Chile 20171218 -->
+                <sequence>
+                    <element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:datos_fallaType"/>
+                </sequence>
+            </complexType>
+            <complexType name="componente_concentrador"><!-- Nuevo Campo Chile 20171218 -->
+                <sequence>
+                    <element name="MARCA" minOccurs="0" type="tns:alfanumerico_50"/>
+                    <element name="MODELO" minOccurs="0" type="tns:alfanumerico_50"/>
+                    <element name="NUMERO_SERIE" minOccurs="0" type="tns:alfanumerico_50"/>
+                    <element name="datos_falla" minOccurs="0" type="tns:ArrayofDatosFalla"/>
+                </sequence>
+            </complexType>
+            <complexType name="componente_simcard"><!-- Nuevo Campo Chile 20171218 -->
+                <sequence>
+                    <element name="MARCA" minOccurs="0" type="tns:alfanumerico_50"/>
+                    <element name="MODELO" minOccurs="0" type="tns:alfanumerico_50"/>
+                    <element name="NUMERO_SERIE" minOccurs="0" type="tns:alfanumerico_50"/>
+                    <element name="datos_falla" minOccurs="0" type="tns:ArrayofDatosFalla"/>
+                </sequence>
+            </complexType>
+           <complexType name="componente_modem"><!-- Nuevo Campo Chile 20171218 -->
+                <sequence>
+                    <element name="MARCA" minOccurs="0" type="tns:alfanumerico_50"/>
+                    <element name="MODELO" minOccurs="0" type="tns:alfanumerico_50"/>
+                    <element name="NUMERO_SERIE" minOccurs="0" type="tns:alfanumerico_50"/>
+                    <element name="datos_falla" minOccurs="0" type="tns:ArrayofDatosFalla"/>
+                </sequence>
+            </complexType>
+            <complexType name="componente_caja"><!-- Nuevo Campo Chile 20171218 -->
+                <sequence>
+                    <element name="MARCA" minOccurs="0" type="tns:alfanumerico_50"/>
+                    <element name="MODELO" minOccurs="0" type="tns:alfanumerico_50"/>
+                    <element name="NUMERO_SERIE" minOccurs="0" type="tns:alfanumerico_50"/>
+                    <element name="datos_falla" minOccurs="0" type="tns:ArrayofDatosFalla"/>
+                </sequence>
+            </complexType>
+
+            <simpleType name="alfanumerico_1">
+                <restriction base="string">
+                    <maxLength value="1"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="alfanumerico_15">
+                <restriction base="string">
+                    <maxLength value="15"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="alfanumerico_150">
+                <restriction base="string">
+                    <maxLength value="150"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="alfanumerico_200">
+                <restriction base="string">
+                    <maxLength value="200"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="alfanumerico_2000">
+                <restriction base="string">
+                    <maxLength value="2000"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="alfanumerico_255">
+                <restriction base="string">
+                    <maxLength value="255"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="alfanumerico_300">
+                <restriction base="string">
+                    <maxLength value="300"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="alfanumerico_50">
+                <restriction base="string">
+                    <maxLength value="50"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="numerico_10_8">
+                <restriction base="decimal">
+                    <totalDigits value="10"/>
+                    <fractionDigits value="8"/>
+                </restriction>
+            </simpleType>
+            <element name="CreacionTdC_Request" type="tns:CreacionTdC_RequestType"/>
+            <element name="CreacionTdC_Response" type="tns:CreacionTdC_ResponseType"/>
+        </schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://xmlns.endesa.com/CommonSchemas" targetNamespace="http://xmlns.endesa.com/CommonSchemas" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <simpleType name="ArchitectureVersion">
+                <restriction base="string"/>
+            </simpleType>
+            <complexType name="AuditType">
+                <sequence>
+                    <element name="SOAId" type="tns:SOAId"/>
+                    <element name="SourceApplication" type="tns:SourceApplication"/>
+                    <element name="ServiceName" type="tns:ServiceName"/>
+                    <element name="ExternalId" type="tns:ExternalId" minOccurs="0"/>
+                    <element name="IP" type="tns:IP" minOccurs="0"/>
+                    <element name="Client" type="tns:Client" minOccurs="0"/>
+                    <element name="User" type="tns:User" minOccurs="0"/>
+                    <element name="Language" type="tns:Language" minOccurs="0"/>
+                    <element name="Version" type="tns:Version" minOccurs="0"/>
+                    <element name="ArchitectureVersion" type="tns:ArchitectureVersion" minOccurs="0"/>
+                    <element name="RequestRegisterFlag" type="tns:RequestRegisterFlag" minOccurs="0"/>
+                    <element name="Layer" type="tns:Layer"/>
+                    <element name="Status" type="tns:Status"/>
+                    <element name="TimeStamp" type="tns:TimeStamp"/>
+                    <element ref="tns:Message" minOccurs="0"/>
+                    <element name="InFunctional" type="tns:InFunctional" minOccurs="0"/>
+                    <element name="TimeLayer" type="tns:TimeLayer" minOccurs="0"/>
+                    <element ref="tns:Error" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <simpleType name="Client">
+                <restriction base="string">
+                    <maxLength value="50"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="CodigoError">
+                <restriction base="string">
+                    <maxLength value="15"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Correction">
+                <restriction base="string">
+                    <maxLength value="2000"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="ErrorCode">
+                <restriction base="string">
+                    <maxLength value="15"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="ErrorDate">
+                <restriction base="dateTime"/>
+            </simpleType>
+            <simpleType name="ErrorMessage">
+                <restriction base="string">
+                    <maxLength value="2000"/>
+                </restriction>
+            </simpleType>
+            <complexType name="ErrorType">
+                <sequence>
+                    <element name="Correction" type="tns:Correction"/>
+                    <element name="ErrorCode" type="tns:ErrorCode"/>
+                    <element name="ErrorDate" type="tns:ErrorDate"/>
+                    <element name="ErrorMessage" type="tns:ErrorMessage"/>
+                    <element ref="tns:ErrorType"/>
+                    <element name="Module" type="tns:Module"/>
+                    <element name="Process" type="tns:Process"/>
+                    <element name="Severity" type="tns:Severity"/>
+                    <element name="StackTrace" type="tns:StackTrace"/>
+                    <element name="Task" type="tns:Task"/>
+                </sequence>
+            </complexType>
+            <simpleType name="ExternalId">
+                <restriction base="string">
+                    <maxLength value="50"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="FechaHora">
+                <restriction base="dateTime">
+                    <pattern value="dd-mm-YYYY HH:mm:ss"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Funcion">
+                <restriction base="string">
+                    <maxLength value="20"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="IP">
+                <restriction base="string">
+                    <maxLength value="15"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="InFunctional">
+                <restriction base="string">
+                    <maxLength value="50"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Language">
+                <restriction base="string">
+                    <maxLength value="3"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Layer">
+                <restriction base="string">
+                    <maxLength value="50"/>
+                </restriction>
+            </simpleType>
+            <complexType name="MCDERROR">
+                <sequence>
+                    <element name="CodigoError" type="tns:CodigoError"/>
+                    <element name="MensajeError" type="tns:MensajeError"/>
+                    <element name="TipoError" type="tns:TipoError"/>
+                    <element name="FechaHora" type="tns:FechaHora"/>
+                    <element name="Programa" type="tns:Programa"/>
+                    <element name="Funcion" type="tns:Funcion"/>
+                    <element name="Traza" type="tns:Traza" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <simpleType name="MensajeError">
+                <restriction base="string">
+                    <maxLength value="2000"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Module">
+                <restriction base="string">
+                    <maxLength value="50"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Process">
+                <restriction base="string">
+                    <maxLength value="50"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Programa">
+                <restriction base="string">
+                    <maxLength value="50"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="RequestRegisterFlag">
+                <restriction base="boolean"/>
+            </simpleType>
+            <complexType name="SOAHeaderResponseType">
+                <sequence>
+                    <element name="SOAId" type="tns:SOAId" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <complexType name="SOAHeaderType">
+                <sequence>
+                    <element name="SOAId" type="tns:SOAId" minOccurs="0"/>
+                    <element name="SourceApplication" type="tns:SourceApplication"/>
+                    <element name="ServiceName" type="tns:ServiceName"/>
+                    <element name="ExternalId" type="tns:ExternalId"/>
+                    <element name="IP" type="tns:IP"/>
+                    <element name="Client" type="tns:Client"/>
+                    <element name="User" type="tns:User" minOccurs="0"/>
+                    <element name="Language" type="tns:Language"/>
+                    <element name="Version" type="tns:Version"/>
+                    <element name="ArchitectureVersion" type="tns:ArchitectureVersion" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <simpleType name="SOAId">
+                <restriction base="string">
+                    <maxLength value="36"/>
+                </restriction>
+            </simpleType>
+            <complexType name="SOAParametersType">
+                <sequence>
+                    <element name="SOAHeader" type="tns:SOAHeaderType"/>
+                    <element name="SOAFunctionalInfo" type="anyType" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <simpleType name="ServiceName">
+                <restriction base="string">
+                    <maxLength value="50"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="ServiceVersion">
+                <restriction base="string">
+                    <maxLength value="4"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Severity">
+                <restriction base="string">
+                    <maxLength value="7"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="SourceApplication">
+                <restriction base="string">
+                    <maxLength value="4"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="StackTrace">
+                <restriction base="string">
+                    <maxLength value="4000"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Status">
+                <restriction base="string">
+                    <maxLength value="15"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Task">
+                <restriction base="string">
+                    <maxLength value="50"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="TimeLayer">
+                <restriction base="integer">
+                    <maxInclusive value="999999999"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="TimeStamp">
+                <restriction base="dateTime"/>
+            </simpleType>
+            <simpleType name="TipoError">
+                <restriction base="string">
+                    <maxLength value="25"/>
+                </restriction>
+            </simpleType>
+            <complexType name="TraceDataType">
+                <sequence>
+                    <element name="SOAId" type="tns:SOAId"/>
+                    <element name="ExternalId" type="tns:ExternalId"/>
+                    <element name="ServiceName" type="tns:ServiceName"/>
+                </sequence>
+            </complexType>
+            <simpleType name="Traza">
+                <restriction base="string">
+                    <maxLength value="4000"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="User">
+                <restriction base="string">
+                    <maxLength value="20"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Version">
+                <restriction base="string">
+                    <maxLength value="30"/>
+                </restriction>
+            </simpleType>
+            <element name="Audit" type="tns:AuditType"/>
+            <element name="Error" type="tns:ErrorType"/>
+            <element name="ErrorType">
+                <simpleType>
+                    <restriction base="string">
+                        <maxLength value="25"/>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="MCD_Error" type="tns:MCDERROR"/>
+            <element name="Message" type="anyType"/>
+            <element name="SOAHeader" type="tns:SOAHeaderType"/>
+            <element name="SOAHeaderResponse" type="tns:SOAHeaderResponseType"/>
+            <element name="SOAParameters" type="tns:SOAParametersType"/>
+            <element name="TraceData" type="tns:TraceDataType"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="CreacionTdC_Request">
+        <wsdl:part name="request" element="ns0:CreacionTdC_Request"/>
+    </wsdl:message>
+    <wsdl:message name="CreacionTdC_Response">
+        <wsdl:part name="response" element="ns0:CreacionTdC_Response"/>
+    </wsdl:message>
+    <wsdl:message name="CreacionTdC_Fault">
+        <wsdl:part name="fault" element="ns1:MCD_Error"/>
+    </wsdl:message>
+    <wsdl:portType name="SITDC501_PortType">
+        <wsdl:operation name="CreacionTdC_Operation">
+            <wsdl:input message="tns:CreacionTdC_Request"/>
+            <wsdl:output message="tns:CreacionTdC_Response"/>
+            <wsdl:fault name="fault" message="tns:CreacionTdC_Fault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SITDC501_BindingSOAP_HTTP" type="tns:SITDC501_PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="CreacionTdC_Operation">
+            <wsdl:documentation/>
+            <soap:operation style="document" soapAction="CreacionTdC_Operation"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="request"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="response"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault use="literal" name="fault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="SITDC501_PortType">
+        <wsdl:port name="SITDC501_BindingSOAP_HTTP" binding="tns:SITDC501_BindingSOAP_HTTP">
+            <soap:address location="https://localhost:10579/SITDC501_PortType/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

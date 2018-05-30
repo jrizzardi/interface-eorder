@@ -1,5 +1,5 @@
 
-package edesur.eorder.ws.creacion;
+package edesur.eorder.ws.creartdc;
 
 import edesur.eorder.ws.common.Header;
 

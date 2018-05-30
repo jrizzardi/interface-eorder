@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:cxf="http://camel.apache.org/schema/blueprint/cxf"
            xsi:schemaLocation="http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+    <!--
+    <cxf:cxfEndpoint id="xxx"
+                     address="http://localhost:8080"
+                     wsdlURL="wsdl/SITDC501.wsdl"
+                     serviceClass="com.endesa.xmlns.wsdl.sscc.eorder.sitdc501.sitdc501_porttype.SITDC501PortType_Service"
+                     loggingFeatureEnabled="true"
+    >
+        <cxf:properties>
+            <entry key="dataFormat" value="POJO"/>
+        </cxf:properties>
+    </cxf:cxfEndpoint>
+-->
 
     <bean id="ordenMacMapper" class="edesur.eorder.creacion.OrdenMacMapper"/>
 
     <camelContext xmlns="http://camel.apache.org/schema/blueprint"
                   id="edesur.eorder.crear-tdc"
                   useMDCLogging="true" >
+
+        <dataFormats>
+            <soapjaxb id="soapFormatCrearTdc" contextPath="edesur.eorder.ws.creartdc" />
+        </dataFormats>
 
         <route id="trigger-manual-crear-tdc">
             <from uri="file:work/eorder/trigger?delete=true&amp;include=crear-.*"/>
@@ -31,7 +49,18 @@
                 <simple>${body}</simple>
                 <to uri="bean:ordenMacMapper?method=mapRow"/>
                 <log message="${body}" loggingLevel="DEBUG" logName="edesur.eorder.crear-tdc"/>
-                <process ref="corteMacRequest"/>
+                <setHeader headerName="CamelFileName">
+                    <simple>crear_tdc_${date:now:yyyyMMdd_HHmmss_SSS}.xml</simple>
+                </setHeader>
+                <!--
+                <marshal ref="soap"/>
+                <to uri="file:work/eorder/output"/>
+                -->
+                <marshal ref="soapFormatCrearTdc"/>
+                <!--
+                <to uri="cxf:bean:xxx" />
+-->
+                <to uri="file:work/eorder/output"/>
             </split>
             <log message="Fin pasar cortes MAC"/>
         </route>

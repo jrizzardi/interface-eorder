@@ -1,5 +1,5 @@
 
-package edesur.eorder.ws;
+package edesur.eorder.ws_00;
 
 import com.endesa.xmlns.wsdl.sscc.eorder.sitdc501.mensajes.DatosClaveProcesosTDC;
 

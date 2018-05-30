@@ -131,6 +131,9 @@
                         <Import-Package>
                             org.osgi.service.*,
                             javax.sql,
+                            org.apache.cxf,
+                            org.xmlsoap.schemas.soap.envelope,
+                            org.apache.cxf.service.model,
                             *
                         </Import-Package>
                         <DynamicImport-Package>

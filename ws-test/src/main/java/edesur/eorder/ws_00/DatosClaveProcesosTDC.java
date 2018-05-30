@@ -1,7 +1,5 @@
 
-package edesur.eorder.ws.creacion;
-
-import edesur.eorder.Config;
+package edesur.eorder.ws_00;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -10,23 +8,23 @@ import javax.xml.bind.annotation.XmlType;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DatosClave", propOrder = {
-})
-public class DatosClave {
+@XmlType(name = "DatosClaveProcesosTDC", propOrder = {})
+public class DatosClaveProcesosTDC {
+
     @XmlElement(name = "CODIGO_DISTRIBUIDORA", required = true)
-    private final String codigoDistribuidora = Config.CodigoDistribuidora;
+    private final String codigoDistribuidora = "ESU";
 
     @XmlElement(name = "CODIGO_EXTERNO_DEL_TDC", required = true)
     private String codigoExternoTDC;
 
     @XmlElement(name = "CODIGO_PROCESO", required = true)
-    private String codigoProceso;
+    private final String codigoProceso = "Proceso";
 
     @XmlElement(name = "CODIGO_SISTEMA_EXTERNO_DE_ORIGEN", required = true)
-    private final String codigoSistemaOrigen = Config.CodigoSistemaOrigen;
+    private final String codigoSistemaExternoOrigen = "ESUSYN";
 
     @XmlElement(name = "CODIGO_SUBPROCESO", required = true)
-    private String codigoSubproceso;
+    private final String codigoSubproceso = "SubProceso";
 
     @XmlElement(name = "CODIGO_TIPO_DE_TDC", required = true)
     private String tipoTDC;
@@ -51,20 +49,12 @@ public class DatosClave {
         return codigoProceso;
     }
 
-    public void setCodigoProceso(String value) {
-        this.codigoProceso = value;
-    }
-
-    public String getCodigoSistemaOrigen() {
-        return codigoSistemaOrigen;
+    public String getCodigoSistemaExternoOrigen() {
+        return codigoSistemaExternoOrigen;
     }
 
     public String getCodigoSubproceso() {
         return codigoSubproceso;
-    }
-
-    public void setCodigoSubproceso(String value) {
-        this.codigoSubproceso = value;
     }
 
     public String getTipoTDC() {

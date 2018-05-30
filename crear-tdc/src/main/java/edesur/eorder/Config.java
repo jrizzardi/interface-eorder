@@ -4,5 +4,5 @@ public interface Config {
     String CodigoDistribuidora = "ESU";
     String CodigoSistemaOrigen = "ESUSYN";
 
-    String MDC = "edesur.eorder.crear-tdc";
+    String MDC = "edesur.eorder.creartdc-tdc";
 }
