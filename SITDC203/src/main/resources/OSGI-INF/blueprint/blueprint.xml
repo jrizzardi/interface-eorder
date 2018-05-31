@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:cxf="http://camel.apache.org/schema/blueprint/cxf"
+           xsi:schemaLocation="http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+    <bean id="ordenMacMapper" class="edesur.eorder.cancelar.OrdenMacMapper"/>
+
+    <bean id="myNameStrategy" class="org.apache.camel.dataformat.soap.name.ServiceInterfaceStrategy">
+        <argument value="edesur.eorder.ws.cancelar.SITDC203PortType"/>
+        <argument value="true"/>
+    </bean>
+
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint"
+                  id="edesur.eorder.sitdc203"
+                  useMDCLogging="true" >
+
+        <dataFormats>
+            <!--
+            <soapjaxb id="soapFormat" contextPath="edesur.eorder.ws.cancelar" elementNameStrategyRef="myNameStrategy" />
+            -->
+            <soapjaxb id="soapFormat" contextPath="edesur.eorder.ws.cancelar" />
+        </dataFormats>
+
+        <route id="trigger-prueba-203">
+            <from uri="file:work/eorder/trigger?delete=true&amp;include=203"/>
+            <to uri="direct:prueba-203"/>
+        </route>
+
+        <route id="prueba-203">
+            <from uri="direct:prueba-203"/>
+            <to uri="bean:ordenMacMapper?method=mapRow"/>
+            <log message="${body}" loggingLevel="DEBUG" logName="edesur.eorder.sitdc203"/>
+            <setHeader headerName="CamelFileName">
+                <simple>sitdc203_${date:now:yyyyMMdd_HHmmss_SSS}.xml</simple>
+            </setHeader>
+            <marshal ref="soapFormat"/>
+            <to uri="file:work/eorder/output"/>
+        </route>
+
+    </camelContext>
+
+</blueprint>
