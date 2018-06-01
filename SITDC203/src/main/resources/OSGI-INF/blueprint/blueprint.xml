@@ -6,19 +6,27 @@
 
     <bean id="ordenMacMapper" class="edesur.eorder.cancelar.OrdenMacMapper"/>
 
-    <bean id="myNameStrategy" class="org.apache.camel.dataformat.soap.name.ServiceInterfaceStrategy">
-        <argument value="edesur.eorder.ws.cancelar.SITDC203PortType"/>
-        <argument value="true"/>
-    </bean>
+    <!--
+    <cxf:cxfEndpoint id="cxfClient"
+                     address="https://tmefco-ws-pru.risorse.enel/SITDC203_PortType/"
+                     loggingFeatureEnabled="true"
+                     wsdlURL="wsdl/SITDC203.wsdl"
+                     serviceClass="edesur.eorder.ws.cancelar.SITDC203PortType_Service" />
+
+    -->
+    <cxf:cxfEndpoint id="cxfClient"
+                     address="https://tmefco-ws-pru.risorse.enel/SITDC203_PortType/"
+                     loggingFeatureEnabled="true" >
+        <cxf:properties>
+            <entry key="dataFormat" value="MESSAGE"/>
+        </cxf:properties>
+    </cxf:cxfEndpoint>
 
     <camelContext xmlns="http://camel.apache.org/schema/blueprint"
                   id="edesur.eorder.sitdc203"
                   useMDCLogging="true" >
 
         <dataFormats>
-            <!--
-            <soapjaxb id="soapFormat" contextPath="edesur.eorder.ws.cancelar" elementNameStrategyRef="myNameStrategy" />
-            -->
             <soapjaxb id="soapFormat" contextPath="edesur.eorder.ws.cancelar" />
         </dataFormats>
 
@@ -31,11 +39,34 @@
             <from uri="direct:prueba-203"/>
             <to uri="bean:ordenMacMapper?method=mapRow"/>
             <log message="${body}" loggingLevel="DEBUG" logName="edesur.eorder.sitdc203"/>
+            <!--
             <setHeader headerName="CamelFileName">
                 <simple>sitdc203_${date:now:yyyyMMdd_HHmmss_SSS}.xml</simple>
             </setHeader>
             <marshal ref="soapFormat"/>
             <to uri="file:work/eorder/output"/>
+            -->
+            <doTry>
+                <setHeader headerName="CamelFileName">
+                    <simple>sitdc203_${date:now:yyyyMMdd_HHmmss_SSS}.xml</simple>
+                </setHeader>
+                <marshal ref="soapFormat"/>
+                <setHeader headerName="CamelFileName">
+                    <simple>sitdc203_${date:now:yyyyMMdd_HHmmss_SSS}.xml</simple>
+                </setHeader>
+                <marshal ref="soapFormat"/>
+                <multicast>
+                    <to uri="file:work/eorder/output"/>
+                    <to uri="cxf:bean:cxfClient" />
+                </multicast>
+                <doCatch>
+                    <exception>java.lang.Exception</exception>
+                    <handled>
+                        <constant>true</constant>
+                    </handled>
+                    <to uri="log:edesur.eorder.sitdc203?level=ERROR&amp;showAll=true&amp;multiline=true"/>
+                </doCatch>
+            </doTry>
         </route>
 
     </camelContext>
