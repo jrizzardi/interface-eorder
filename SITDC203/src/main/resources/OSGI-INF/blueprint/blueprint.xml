@@ -11,11 +11,13 @@
                      address="https://tmefco-ws-pru.risorse.enel/SITDC203_PortType/"
                      loggingFeatureEnabled="true"
                      wsdlURL="wsdl/SITDC203.wsdl"
-                     serviceClass="edesur.eorder.ws.cancelar.SITDC203PortType_Service" />
+                     serviceClass="edesur.eorder.ws.cancelar.SITDC203PortType_Service"
+                     />
 
     -->
     <cxf:cxfEndpoint id="cxfClient"
                      address="https://tmefco-ws-pru.risorse.enel/SITDC203_PortType/"
+                     serviceClass="edesur.eorder.ws.cancelar.SITDC203PortType_Service"
                      loggingFeatureEnabled="true" >
         <cxf:properties>
             <entry key="dataFormat" value="MESSAGE"/>
@@ -50,7 +52,6 @@
                 <setHeader headerName="CamelFileName">
                     <simple>sitdc203_${date:now:yyyyMMdd_HHmmss_SSS}.xml</simple>
                 </setHeader>
-                <marshal ref="soapFormat"/>
                 <setHeader headerName="CamelFileName">
                     <simple>sitdc203_${date:now:yyyyMMdd_HHmmss_SSS}.xml</simple>
                 </setHeader>
@@ -59,6 +60,7 @@
                     <to uri="file:work/eorder/output"/>
                     <to uri="cxf:bean:cxfClient" />
                 </multicast>
+                <log message="${body}" loggingLevel="DEBUG" logName="edesur.eorder.sitdc203"/>
                 <doCatch>
                     <exception>java.lang.Exception</exception>
                     <handled>
