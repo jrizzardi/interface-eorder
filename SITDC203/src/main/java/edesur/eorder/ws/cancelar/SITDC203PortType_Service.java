@@ -8,9 +8,12 @@ import javax.xml.ws.WebServiceClient;
 import javax.xml.ws.WebServiceFeature;
 import javax.xml.ws.Service;
 
-@WebServiceClient(name = "SITDC203_PortType",
-                  wsdlLocation = "file:/C:/Proyectos/eOrder/interface-eorder/SITDC203/src/main/resources/wsdl/SITDC203.wsdl",
-                  targetNamespace = "http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC203/SITDC203_PortType") 
+@WebServiceClient(
+        name = "SITDC203_PortType",
+        wsdlLocation = "wsdl/SITDC203.wsdl",
+        targetNamespace = "http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC203/SITDC203_PortType"
+
+)
 public class SITDC203PortType_Service extends Service {
 
     public final static URL WSDL_LOCATION = null;
