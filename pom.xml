@@ -17,6 +17,7 @@
         <module>ws-test</module>
         <module>SITDC203</module>
         <module>SITDC203_message</module>
+        <module>SITDC203_generated</module>
     </modules>
 
     <properties>

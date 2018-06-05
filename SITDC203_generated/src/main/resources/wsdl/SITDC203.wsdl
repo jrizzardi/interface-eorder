@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:ns1="http://xmlns.endesa.com/CommonSchemas" xmlns:tns="http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC203/SITDC203_PortType" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns0="http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC203/Mensajes" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="Untitled" targetNamespace="http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC203/SITDC203_PortType">
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC203/Mensajes" xmlns:tipos_comunes="http://xmlns.endesa.com/CommonSchemas" targetNamespace="http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC203/Mensajes" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <import namespace="http://xmlns.endesa.com/CommonSchemas"/>
+            <complexType name="AnulacionSuspensionCierreTdC_RequestType">
+                <sequence>
+                    <element name="SOAHeader" type="tipos_comunes:SOAHeaderType"/>
+                    <element name="Request" type="tns:RequestType"/>
+                </sequence>
+            </complexType>
+            <complexType name="AnulacionSuspensionCierreTdC_ResponseType">
+                <sequence>
+                    <element name="SOAHeaderResponse" type="tipos_comunes:SOAHeaderResponseType"/>
+                    <element name="Response" type="tns:ResponseType"/>
+                </sequence>
+            </complexType>
+            <complexType name="RequestType">
+                <all>
+                    <element name="CODIGO_DISTRIBUIDORA" type="tns:alfanumerico_50"/>
+                    <element name="CODIGO_EXTERNO_DEL_TDC" type="tns:numerico"/>
+                    <element name="CODIGO_SISTEMA_EXTERNO_DE_ORIGEN" type="tns:alfanumerico_50"/>
+                    <element name="CODIGO_TIPO_DE_TDC" type="tns:alfanumerico_50"/>
+                    <element name="LLAVE_SECRETA" type="tns:alfanumerico_50"/>
+                    <element name="TIPO_DE_OPERACION" type="tns:numerico"/>
+                </all>
+            </complexType>
+            <complexType name="ResponseType">
+                <all>
+                    <element name="CODIGO_DEL_RESULTADO" type="tns:alfanumerico_50"/>
+                    <element name="DESCRIPCION_DEL_RESULTADO" type="tns:alfanumerico_255" minOccurs="0"/>
+                </all>
+            </complexType>
+            <simpleType name="alfanumerico_255">
+                <restriction base="string">
+                    <maxLength value="255"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="alfanumerico_50">
+                <restriction base="string">
+                    <maxLength value="50"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="numerico">
+                <restriction base="long"/>
+            </simpleType>
+            <element name="AnulacionSuspensionCierreTdC_Request" type="tns:AnulacionSuspensionCierreTdC_RequestType"/>
+            <element name="AnulacionSuspensionCierreTdC_Response" type="tns:AnulacionSuspensionCierreTdC_ResponseType"/>
+        </schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://xmlns.endesa.com/CommonSchemas" targetNamespace="http://xmlns.endesa.com/CommonSchemas" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <simpleType name="ArchitectureVersion">
+                <restriction base="string"/>
+            </simpleType>
+            <complexType name="AuditType">
+                <sequence>
+                    <element name="SOAId" type="tns:SOAId"/>
+                    <element name="SourceApplication" type="tns:SourceApplication"/>
+                    <element name="ServiceName" type="tns:ServiceName"/>
+                    <element name="ExternalId" type="tns:ExternalId" minOccurs="0"/>
+                    <element name="IP" type="tns:IP" minOccurs="0"/>
+                    <element name="Client" type="tns:Client" minOccurs="0"/>
+                    <element name="User" type="tns:User" minOccurs="0"/>
+                    <element name="Language" type="tns:Language" minOccurs="0"/>
+                    <element name="Version" type="tns:Version" minOccurs="0"/>
+                    <element name="ArchitectureVersion" type="tns:ArchitectureVersion" minOccurs="0"/>
+                    <element name="RequestRegisterFlag" type="tns:RequestRegisterFlag" minOccurs="0"/>
+                    <element name="Layer" type="tns:Layer"/>
+                    <element name="Status" type="tns:Status"/>
+                    <element name="TimeStamp" type="tns:TimeStamp"/>
+                    <element ref="tns:Message" minOccurs="0"/>
+                    <element name="InFunctional" type="tns:InFunctional" minOccurs="0"/>
+                    <element name="TimeLayer" type="tns:TimeLayer" minOccurs="0"/>
+                    <element ref="tns:Error" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <simpleType name="Client">
+                <restriction base="string">
+                    <maxLength value="50"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="CodigoError">
+                <restriction base="string">
+                    <maxLength value="15"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Correction">
+                <restriction base="string">
+                    <maxLength value="2000"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="ErrorCode">
+                <restriction base="string">
+                    <maxLength value="15"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="ErrorDate">
+                <restriction base="dateTime"/>
+            </simpleType>
+            <simpleType name="ErrorMessage">
+                <restriction base="string">
+                    <maxLength value="2000"/>
+                </restriction>
+            </simpleType>
+            <complexType name="ErrorType">
+                <sequence>
+                    <element name="Correction" type="tns:Correction"/>
+                    <element name="ErrorCode" type="tns:ErrorCode"/>
+                    <element name="ErrorDate" type="tns:ErrorDate"/>
+                    <element name="ErrorMessage" type="tns:ErrorMessage"/>
+                    <element ref="tns:ErrorType"/>
+                    <element name="Module" type="tns:Module"/>
+                    <element name="Process" type="tns:Process"/>
+                    <element name="Severity" type="tns:Severity"/>
+                    <element name="StackTrace" type="tns:StackTrace"/>
+                    <element name="Task" type="tns:Task"/>
+                </sequence>
+            </complexType>
+            <simpleType name="ExternalId">
+                <restriction base="string">
+                    <maxLength value="50"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="FechaHora">
+                <restriction base="dateTime">
+                    <pattern value="dd-mm-YYYY HH:mm:ss"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Funcion">
+                <restriction base="string">
+                    <maxLength value="20"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="IP">
+                <restriction base="string">
+                    <maxLength value="15"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="InFunctional">
+                <restriction base="string">
+                    <maxLength value="50"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Language">
+                <restriction base="string">
+                    <maxLength value="3"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Layer">
+                <restriction base="string">
+                    <maxLength value="50"/>
+                </restriction>
+            </simpleType>
+            <complexType name="MCDERROR">
+                <sequence>
+                    <element name="CodigoError" type="tns:CodigoError"/>
+                    <element name="MensajeError" type="tns:MensajeError"/>
+                    <element name="TipoError" type="tns:TipoError"/>
+                    <element name="FechaHora" type="tns:FechaHora"/>
+                    <element name="Programa" type="tns:Programa"/>
+                    <element name="Funcion" type="tns:Funcion"/>
+                    <element name="Traza" type="tns:Traza" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <simpleType name="MensajeError">
+                <restriction base="string">
+                    <maxLength value="2000"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Module">
+                <restriction base="string">
+                    <maxLength value="50"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Process">
+                <restriction base="string">
+                    <maxLength value="50"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Programa">
+                <restriction base="string">
+                    <maxLength value="50"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="RequestRegisterFlag">
+                <restriction base="boolean"/>
+            </simpleType>
+            <complexType name="SOAHeaderResponseType">
+                <sequence>
+                    <element name="SOAId" type="tns:SOAId" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <complexType name="SOAHeaderType">
+                <sequence>
+                    <element name="SOAId" type="tns:SOAId" minOccurs="0"/>
+                    <element name="SourceApplication" type="tns:SourceApplication"/>
+                    <element name="ServiceName" type="tns:ServiceName"/>
+                    <element name="ExternalId" type="tns:ExternalId"/>
+                    <element name="IP" type="tns:IP"/>
+                    <element name="Client" type="tns:Client"/>
+                    <element name="User" type="tns:User" minOccurs="0"/>
+                    <element name="Language" type="tns:Language"/>
+                    <element name="Version" type="tns:Version"/>
+                    <element name="ArchitectureVersion" type="tns:ArchitectureVersion" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <simpleType name="SOAId">
+                <restriction base="string">
+                    <maxLength value="36"/>
+                </restriction>
+            </simpleType>
+            <complexType name="SOAParametersType">
+                <sequence>
+                    <element name="SOAHeader" type="tns:SOAHeaderType"/>
+                    <element name="SOAFunctionalInfo" type="anyType" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <simpleType name="ServiceName">
+                <restriction base="string">
+                    <maxLength value="50"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="ServiceVersion">
+                <restriction base="string">
+                    <maxLength value="4"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Severity">
+                <restriction base="string">
+                    <maxLength value="7"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="SourceApplication">
+                <restriction base="string">
+                    <maxLength value="4"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="StackTrace">
+                <restriction base="string">
+                    <maxLength value="4000"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Status">
+                <restriction base="string">
+                    <maxLength value="15"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Task">
+                <restriction base="string">
+                    <maxLength value="50"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="TimeLayer">
+                <restriction base="integer">
+                    <maxInclusive value="999999999"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="TimeStamp">
+                <restriction base="dateTime"/>
+            </simpleType>
+            <simpleType name="TipoError">
+                <restriction base="string">
+                    <maxLength value="25"/>
+                </restriction>
+            </simpleType>
+            <complexType name="TraceDataType">
+                <sequence>
+                    <element name="SOAId" type="tns:SOAId"/>
+                    <element name="ExternalId" type="tns:ExternalId"/>
+                    <element name="ServiceName" type="tns:ServiceName"/>
+                </sequence>
+            </complexType>
+            <simpleType name="Traza">
+                <restriction base="string">
+                    <maxLength value="4000"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="User">
+                <restriction base="string">
+                    <maxLength value="20"/>
+                </restriction>
+            </simpleType>
+            <simpleType name="Version">
+                <restriction base="string">
+                    <maxLength value="30"/>
+                </restriction>
+            </simpleType>
+            <element name="Audit" type="tns:AuditType"/>
+            <element name="Error" type="tns:ErrorType"/>
+            <element name="ErrorType">
+                <simpleType>
+                    <restriction base="string">
+                        <maxLength value="25"/>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="MCD_Error" type="tns:MCDERROR"/>
+            <element name="Message" type="anyType"/>
+            <element name="SOAHeader" type="tns:SOAHeaderType"/>
+            <element name="SOAHeaderResponse" type="tns:SOAHeaderResponseType"/>
+            <element name="SOAParameters" type="tns:SOAParametersType"/>
+            <element name="TraceData" type="tns:TraceDataType"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:service name="SITDC203_PortType">
+        <wsdl:port name="SITDC203_PortType" binding="tns:SITDC203_PortTypeBinding">
+            <soap:address location="http://localhost:30004/SITDC203_PortType"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="SITDC203_PortType">
+        <wsdl:operation name="AnulacionSuspensionCierreTdC_Operation">
+            <wsdl:input message="tns:AnulacionSuspensionCierreTdC_Request"/>
+            <wsdl:output message="tns:AnulacionSuspensionCierreTdC_Response"/>
+            <wsdl:fault name="fault" message="tns:AnulacionSuspensionCierreTdC_Fault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SITDC203_PortTypeBinding" type="tns:SITDC203_PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="AnulacionSuspensionCierreTdC_Operation">
+            <soap:operation style="document" soapAction="AnulacionSuspensionCierreTdC_Operation"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="request"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="response"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault use="literal" name="fault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="AnulacionSuspensionCierreTdC_Request">
+        <wsdl:part name="request" element="ns0:AnulacionSuspensionCierreTdC_Request"/>
+    </wsdl:message>
+    <wsdl:message name="AnulacionSuspensionCierreTdC_Response">
+        <wsdl:part name="response" element="ns0:AnulacionSuspensionCierreTdC_Response"/>
+    </wsdl:message>
+    <wsdl:message name="AnulacionSuspensionCierreTdC_Fault">
+        <wsdl:part name="fault" element="ns1:MCD_Error"/>
+    </wsdl:message>
+</wsdl:definitions>
