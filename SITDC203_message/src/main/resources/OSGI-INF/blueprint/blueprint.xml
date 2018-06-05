@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:cxf="http://camel.apache.org/schema/blueprint/cxf"
+           xsi:schemaLocation="http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+    <bean id="ordenMacMapper" class="edesur.eorder.cancelar.OrdenMacMapper"/>
+
+    <!--
+    <cxf:cxfEndpoint id="cxfClient"
+                     address="https://tmefco-ws-pru.risorse.enel/SITDC203_PortType/"
+                     serviceClass="edesur.eorder.ws.cancelar.SITDC203PortType"
+                     loggingFeatureEnabled="true" >
+        <cxf:properties>
+            <entry key="dataFormat" value="MESSAGE"/>
+        </cxf:properties>
+    </cxf:cxfEndpoint>
+    -->
+
+    <cxf:cxfEndpoint id="cxfClient"
+                     address="https://tmefco-ws-pru.risorse.enel/SITDC203_PortType/"
+                     serviceClass="edesur.eorder.ws.cancelar.SITDC203PortType"
+                     loggingFeatureEnabled="true" >
+        <cxf:properties>
+            <entry key="dataFormat" value="MESSAGE"/>
+            <entry key="defaultOperationName" value="AnulacionSuspensionCierreTdC_Operation" />
+            <entry key="defaultOperationNamespace" value="http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC203/Mensajes" />
+        </cxf:properties>
+    </cxf:cxfEndpoint>
+
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint"
+                  id="edesur.eorder.sitdc203message"
+                  useMDCLogging="true" >
+
+        <dataFormats>
+            <soapjaxb id="soapFormat" contextPath="edesur.eorder.ws.cancelar" />
+        </dataFormats>
+
+        <route id="trigger-prueba-203m">
+            <from uri="file:work/eorder/trigger?delete=true&amp;include=203m"/>
+            <to uri="direct:prueba-203m"/>
+        </route>
+
+        <route id="prueba-203m">
+            <from uri="direct:prueba-203m"/>
+            <to uri="bean:ordenMacMapper?method=mapRow"/>
+            <log message="${body}" loggingLevel="DEBUG" logName="edesur.eorder.sitdc203message"/>
+            <setHeader headerName="filenamePrefix">
+                <simple>sitdc203_${date:now:yyyyMMdd_HHmmss_SSS}</simple>
+            </setHeader>
+            <doTry>
+                <setHeader headerName="CamelFileName">
+                    <simple>${header.filenamePrefix}_request.xml</simple>
+                </setHeader>
+                <!--
+                <setHeader headerName="operationName">
+                    <constant>AnulacionSuspensionCierreTdC_Operation</constant>
+                </setHeader>
+                <setHeader headerName="operationNamespace">
+                    <constant>http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC203/Mensajes</constant>
+                </setHeader>
+                -->
+                <marshal ref="soapFormat"/>
+                <multicast>
+                    <to uri="file:work/eorder/output"/>
+                    <!--
+                    <to uri="cxf:bean:cxfClient?defaultOperationName==AnulacionSuspensionCierreTdC_Operation" />
+                    -->
+                    <to uri="cxf:bean:cxfClient" />
+                </multicast>
+                <setHeader headerName="CamelFileName">
+                    <simple>${header.filenamePrefix}_response.xml</simple>
+                </setHeader>
+                <to uri="file:work/eorder/output"/>
+                <!--
+                <log message="${body}" loggingLevel="DEBUG" logName="edesur.eorder.sitdc203message"/>
+                -->
+                <doCatch>
+                    <exception>java.lang.Exception</exception>
+                    <handled>
+                        <constant>true</constant>
+                    </handled>
+                    <to uri="log:edesur.eorder.sitdc203message?level=ERROR&amp;showAll=true&amp;multiline=true"/>
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+
+</blueprint>

@@ -16,6 +16,7 @@
         <module>materiales</module>
         <module>ws-test</module>
         <module>SITDC203</module>
+        <module>SITDC203_message</module>
     </modules>
 
     <properties>
