@@ -16,22 +16,32 @@
                      wsdlURL="wsdl/SITDC203.wsdl"
                      serviceName="s:SITDC203_PortType"
                      xmlns:s="http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC203/SITDC203_PortType"
+                     serviceClass="com.endesa.xmlns.wsdl.sscc.eorder.sitdc501.sitdc501_porttype.SITDC501PortType"
+
+
+                                          serviceName="s:SITDC203_PortType"
+                     xmlns:s="http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC203/SITDC203_PortType"
+
                      />
 
     -->
     <cxf:cxfEndpoint id="cxfClient"
                      address="https://tmefco-ws-pru.risorse.enel/SITDC203_PortType/"
-                     serviceClass="com.endesa.xmlns.wsdl.sscc.eorder.sitdc501.sitdc501_porttype.SITDC501PortType_Service"
-                     wsdlURL="wsdl/SITDC203.wsdl"
+                     wsdlURL="classpath:wsdl/SITDC203.wsdl"
                      loggingFeatureEnabled="true" >
         <cxf:properties>
             <entry key="wrappedStyle" value="true"/>
+            <entry key="dataFormat" value="MESSAGE"/>
         </cxf:properties>
     </cxf:cxfEndpoint>
 
     <camelContext xmlns="http://camel.apache.org/schema/blueprint"
                   id="edesur.eorder.sitdc203g"
                   useMDCLogging="true" >
+
+        <dataFormats>
+            <soapjaxb id="soapFormat" contextPath="com.endesa.xmlns.wsdl.sscc.eorder.sitdc203.mensajes" />
+        </dataFormats>
 
         <route id="trigger-prueba-203g">
             <from uri="file:work/eorder/trigger?delete=true&amp;include=203g"/>
@@ -43,6 +53,7 @@
             <to uri="bean:ordenMacMapper?method=mapRow"/>
             <log message="${body}" loggingLevel="DEBUG" logName="edesur.eorder.sitdc203g"/>
             <doTry>
+                <marshal ref="soapFormat"/>
                 <to uri="cxf:bean:cxfClient" />
                 <log message="${body}" loggingLevel="DEBUG" logName="edesur.eorder.sitdc203"/>
                 <doCatch>
