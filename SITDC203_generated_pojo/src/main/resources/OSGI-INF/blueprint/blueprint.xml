@@ -57,8 +57,11 @@
             <log message="${body}" loggingLevel="DEBUG" logName="edesur.eorder.sitdc203gp"/>
             <doTry>
                 <to uri="cxf:bean:cxfClient" />
-                <log message="${body}" loggingLevel="WARN" logName="edesur.eorder.sitdc203"/>
-                <log message="${body.getClass().getSimpleName()}" loggingLevel="WARN" logName="edesur.eorder.sitdc203"/>
+                <transform>
+                    <simple>${body.get(0)}</simple>
+                </transform>
+                <log message="=== Codigo: ${body.getResponse().getCODIGODELRESULTADO()}" loggingLevel="WARN" logName="edesur.eorder.sitdc203gp"/>
+                <log message="=== Descripcion: ${body.getResponse().getDESCRIPCIONDELRESULTADO()}" loggingLevel="WARN" logName="edesur.eorder.sitdc203gp"/>
                 <doCatch>
                     <exception>java.lang.Exception</exception>
                     <handled>
