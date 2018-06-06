@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:cxf="http://camel.apache.org/schema/blueprint/cxf"
+           xsi:schemaLocation="http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+    <bean id="ordenMacMapper" class="edesur.eorder.cancelar.OrdenMacMapper"/>
+
+    <!--
+    <cxf:cxfEndpoint id="cxfClient"
+                     address="https://tmefco-ws-pru.risorse.enel/SITDC203_PortType/"
+                     loggingFeatureEnabled="true"
+                     wsdlURL="wsdl/SITDC203.wsdl"
+                     serviceClass="edesur.eorder.ws.cancelar.SITDC203PortType_Service"
+                     serviceName="{http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC203/SITDC203_PortType}SITDC203_PortType"
+                     wsdlURL="wsdl/SITDC203.wsdl"
+                     serviceName="s:SITDC203_PortType"
+                     xmlns:s="http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC203/SITDC203_PortType"
+                     serviceClass="com.endesa.xmlns.wsdl.sscc.eorder.sitdc501.sitdc501_porttype.SITDC501PortType"
+
+
+                                          serviceName="s:SITDC203_PortType"
+                     xmlns:s="http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC203/SITDC203_PortType"
+
+                     />
+            <entry key="wrappedStyle" value="true"/>
+                     address="http://localhost:9999"
+
+    -->
+    <cxf:cxfEndpoint id="cxfClient"
+                     address="https://tmefco-ws-pru.risorse.enel/SITDC203_PortType/"
+                     wsdlURL="classpath:wsdl/SITDC203.wsdl"
+                     serviceClass="com.endesa.xmlns.wsdl.sscc.eorder.sitdc203.sitdc203_porttype.SITDC203PortType"
+                     loggingFeatureEnabled="true" >
+        <cxf:properties>
+            <entry key="dataFormat" value="POJO"/>
+            <entry key="defaultOperationName" value="AnulacionSuspensionCierreTdC_Operation" />
+        </cxf:properties>
+    </cxf:cxfEndpoint>
+
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint"
+                  id="edesur.eorder.sitdc203gp"
+                  useMDCLogging="true" >
+
+        <dataFormats>
+            <soapjaxb id="soapFormat" contextPath="com.endesa.xmlns.wsdl.sscc.eorder.sitdc203.mensajes" />
+        </dataFormats>
+
+        <route id="trigger-prueba-203gp">
+            <from uri="file:work/eorder/trigger?delete=true&amp;include=203gp"/>
+            <to uri="direct:prueba-203gp"/>
+        </route>
+
+        <route id="prueba-203gp">
+            <from uri="direct:prueba-203gp"/>
+            <to uri="bean:ordenMacMapper?method=mapRow"/>
+            <log message="${body}" loggingLevel="DEBUG" logName="edesur.eorder.sitdc203gp"/>
+            <doTry>
+                <to uri="cxf:bean:cxfClient" />
+                <log message="${body}" loggingLevel="WARN" logName="edesur.eorder.sitdc203"/>
+                <log message="${body.getClass().getSimpleName()}" loggingLevel="WARN" logName="edesur.eorder.sitdc203"/>
+                <doCatch>
+                    <exception>java.lang.Exception</exception>
+                    <handled>
+                        <constant>true</constant>
+                    </handled>
+                    <to uri="log:edesur.eorder.sitdc203gp?level=ERROR&amp;showAll=true&amp;multiline=true"/>
+                </doCatch>
+            </doTry>
+        </route>
+
+    </camelContext>
+
+</blueprint>

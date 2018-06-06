@@ -14,17 +14,19 @@
         <cxf:properties>
             <entry key="dataFormat" value="MESSAGE"/>
         </cxf:properties>
+                     serviceClass="edesur.eorder.ws.cancelar.SITDC203PortType"
     </cxf:cxfEndpoint>
     -->
 
     <cxf:cxfEndpoint id="cxfClient"
                      address="https://tmefco-ws-pru.risorse.enel/SITDC203_PortType/"
-                     serviceClass="edesur.eorder.ws.cancelar.SITDC203PortType"
                      loggingFeatureEnabled="true" >
         <cxf:properties>
             <entry key="dataFormat" value="MESSAGE"/>
+            <!--
             <entry key="defaultOperationName" value="AnulacionSuspensionCierreTdC_Operation" />
             <entry key="defaultOperationNamespace" value="http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC203/Mensajes" />
+            -->
         </cxf:properties>
     </cxf:cxfEndpoint>
 

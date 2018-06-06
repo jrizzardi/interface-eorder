@@ -16,8 +16,10 @@
         <module>materiales</module>
         <module>ws-test</module>
         <module>SITDC203</module>
+        <module>SITDC203_pojo</module>
         <module>SITDC203_message</module>
         <module>SITDC203_generated</module>
+        <module>SITDC203_generated_pojo</module>
     </modules>
 
     <properties>
