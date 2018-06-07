@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:tns="http://xmlns.enel.com/edesur/presentation/requesttdc/service/P005_PeticionSuspension" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns0="http://xmlns.enel.com/edesur/presentation/requesttdc/abstractwsdl/xsd/P005Schema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="Untitled" targetNamespace="http://xmlns.enel.com/edesur/presentation/requesttdc/service/P005_PeticionSuspension">
+    <wsdl:types>
+        <xs:schema xmlns="http://xmlns.enel.com/edesur/presentation/requesttdc/abstractwsdl/xsd/P005Schema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xmlns.enel.com/edesur/presentation/requesttdc/abstractwsdl/xsd/P005Schema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:complexType name="PeticionSuspensionRichiesta">
+                <xs:sequence>
+                    <xs:element name="LLAVE_SECRETA" type="ns0:alfanumerico50"/>
+                    <xs:element name="CODIGO_DISTRIBUIDORA" type="ns0:alfanumerico50"/>
+                    <xs:element name="CODIGO_SISTEMA_EXTERNO_DE_ORIGEN" type="ns0:alfanumerico50"/>
+                    <xs:element name="CODIGO_TIPO_DE_TDC" type="ns0:alfanumerico50"/>
+                    <xs:element name="CODIGO_EXTERNO_DEL_TDC" type="ns0:alfanumerico50"/>
+                    <xs:element name="TIPO_DE_OPERACION" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="PeticionSuspensionRisposta">
+                <xs:sequence>
+                    <xs:element name="CODIGO_DEL_RESULTADO" type="ns0:alfanumerico50"/>
+                    <xs:element name="DESCRIPCION_DEL_RESULTADO" type="ns0:alfanumerico255" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="alfanumerico255">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="255"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="alfanumerico50">
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="0"/>
+                    <xs:maxLength value="50"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:element name="P005_PeticionSuspensionRequest" type="ns0:PeticionSuspensionRichiesta"/>
+            <xs:element name="P005_PeticionSuspensionResponse" type="ns0:PeticionSuspensionRisposta"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="P005_PeticionSuspension">
+        <wsdl:port name="P005PortTypeEndpoint" binding="tns:P005PortTypeEndpointBinding">
+            <soap:address location="http://localhost:32004/edesur/distribution/maf/presentation/service/P005_PeticionSuspension"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="P005PortType">
+        <wsdl:operation name="P005_PeticionSuspension_Operation">
+            <wsdl:input message="tns:P005_PeticionSuspensionRequest"/>
+            <wsdl:output message="tns:P005_PeticionSuspensionResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="P005PortTypeEndpointBinding" type="tns:P005PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="P005_PeticionSuspension_Operation">
+            <soap:operation style="document" soapAction="P005_PeticionSuspension_Operation"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="P005_PeticionSuspensionRequest"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="P005_PeticionSuspensionResponse"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="P005_PeticionSuspensionRequest">
+        <wsdl:part name="P005_PeticionSuspensionRequest" element="ns0:P005_PeticionSuspensionRequest"/>
+    </wsdl:message>
+    <wsdl:message name="P005_PeticionSuspensionResponse">
+        <wsdl:part name="P005_PeticionSuspensionResponse" element="ns0:P005_PeticionSuspensionResponse"/>
+    </wsdl:message>
+</wsdl:definitions>

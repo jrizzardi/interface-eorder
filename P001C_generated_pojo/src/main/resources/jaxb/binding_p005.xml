@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxws:bindings xmlns:jaxws="http://java.sun.com/xml/ns/jaxws"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+                xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <jaxws:bindings node="xs:schema">
+        <jxb:globalBindings
+                xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                enableJavaNamingConventions="true"
+                underscoreBinding="asCharInWord">
+            <jxb:javaType name="java.util.Date" xmlType="xs:dateTime"
+                          parseMethod="org.apache.cxf.xjc.runtime.DataTypeAdapter.parseDateTime"
+                          printMethod="org.apache.cxf.xjc.runtime.DataTypeAdapter.printDateTime"/>
+        </jxb:globalBindings>
+        <jxb:schemaBindings>
+            <jxb:package name="edesur.eorder.ws.p005.types" />
+        </jxb:schemaBindings>
+    </jaxws:bindings>
+    <jaxws:package name="edesur.eorder.ws.p005.service" />
+</jaxws:bindings>

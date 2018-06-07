@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:tns="http://xmlns.enel.com/edesur/presentation/requesttdc/service/P024_VerificarExistenciaOrdenesTrabajo" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns0="http://xmlns.enel.com/edesur/presentation/requesttdc/abstractwsdl/xsd/P024Schema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="Untitled" targetNamespace="http://xmlns.enel.com/edesur/presentation/requesttdc/service/P024_VerificarExistenciaOrdenesTrabajo">
+    <wsdl:types>
+        <xs:schema xmlns="http://xmlns.enel.com/edesur/presentation/requesttdc/abstractwsdl/xsd/P024Schema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xmlns.enel.com/edesur/presentation/requesttdc/abstractwsdl/xsd/P024Schema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:complexType name="ArrayOfOperacion">
+                <xs:sequence>
+                    <xs:element name="item" type="ns0:Operacion" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfTDC">
+                <xs:sequence>
+                    <xs:element name="item" type="ns0:TDC" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Operacion">
+                <xs:all>
+                    <xs:element name="CODIGO_BAREMO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_CUADRILLA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_DOCUMENTO_OPERARIO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_Y_DESCRIPCION_OPERACION" type="ns0:alfanumerico_300"/>
+                    <xs:element name="ESTADO_OPERACION" type="ns0:alfanumerico_50"/>
+                    <xs:element name="FECHA_DE_VENCIMIENTO_PARA_ANS_CONTRATISTA" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="FECHA_DE_VENCIMIENTO_PARA_ANS_INTERNO" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="FECHA_DE_VENCIMIENTO_PARA_ANS_LEGAL" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="FECHA_Y_HORA_FIN_PLANIFICACION" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="FECHA_Y_HORA_INICIO_PLANIFICACION" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="LATITUD_CUADRILLA" type="ns0:numerico_10_8" minOccurs="0"/>
+                    <xs:element name="LONGITUD_CUADRILLA" type="ns0:numerico_10_8" minOccurs="0"/>
+                    <xs:element name="NOMBRE_Y_APPELIDO_OPERARIO" type="ns0:alfanumerico_300" minOccurs="0"/>
+                    <xs:element name="PLACA_MOVIL" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TELEFONO_OPERARIO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DOCUMENTO_OPERARIO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                </xs:all>
+            </xs:complexType>
+            <xs:complexType name="TDC">
+                <xs:all>
+                    <xs:element name="CODIGO_BARRIO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_CONTRATISTA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_DISTRIBUIDORA" type="ns0:alfanumerico_50"/>
+                    <xs:element name="CODIGO_EXTERNO_DEL_TDC" type="ns0:alfanumerico_50"/>
+                    <xs:element name="CODIGO_LOCALIDAD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_MUNICIPIO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_SISTEMA_EXTERNO_DE_ORIGEN" type="ns0:alfanumerico_50"/>
+                    <xs:element name="CODIGO_TIPO_DE_TDC" type="ns0:alfanumerico_50"/>
+                    <xs:element name="ESTADO_TDC" type="ns0:alfanumerico_50"/>
+                    <xs:element name="LISTA_OPERACION" type="ns0:ArrayOfOperacion"/>
+                    <xs:element name="TEXTO_DIRECCION" type="ns0:alfanumerico_300" minOccurs="0"/>
+                </xs:all>
+            </xs:complexType>
+            <xs:complexType name="VerificarExistenciaOrdenesTrabajoRequest">
+                <xs:all>
+                    <xs:element name="APELLIDO_MATERNO" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="APELLIDO_PATERNO" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="CODIGO_BAREMO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_BARRIO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_CONTRATISTA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_DISTRIBUIDORA" type="ns0:alfanumerico_50"/>
+                    <xs:element name="CODIGO_EXTERNO_DEL_TDC" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_LOCALIDAD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_MUNICIPIO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_SISTEMA_EXTERNO_DE_ORIGEN" type="ns0:alfanumerico_50"/>
+                    <xs:element name="CODIGO_TIPO_DE_TDC" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="DOCUMENTO_OPERARIO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="FECHA_FIN_PLANIFICACION" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="FECHA_INICIO_PLANIFICACION" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="LLAVE_SECRETA" type="ns0:alfanumerico_50"/>
+                    <xs:element name="NOMBRE_OPERARIO" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="PLACA_MOVIL" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TEXTO_DIRECCION" type="ns0:alfanumerico_300" minOccurs="0"/>
+                </xs:all>
+            </xs:complexType>
+            <xs:complexType name="VerificarExistenciaOrdenesTrabajoResponse">
+                <xs:sequence>
+                    <xs:element name="CODIGO_DEL_RESULTADO" type="ns0:alfanumerico_50"/>
+                    <xs:element name="DESCRIPCION_DEL_RESULTADO" type="ns0:alfanumerico_255" minOccurs="0"/>
+                    <xs:element name="LISTA_TDC" type="ns0:ArrayOfTDC" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="alfanumerico_150">
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="150"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="alfanumerico_255">
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="255"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="alfanumerico_300">
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="300"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="alfanumerico_50">
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="50"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="numerico_10_8">
+                <xs:restriction base="xs:decimal">
+                    <xs:totalDigits value="10"/>
+                    <xs:fractionDigits value="8"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:element name="P024_VerificarExistenciaOrdenesTrabajoRequest" type="ns0:VerificarExistenciaOrdenesTrabajoRequest"/>
+            <xs:element name="P024_VerificarExistenciaOrdenesTrabajoResponse" type="ns0:VerificarExistenciaOrdenesTrabajoResponse"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="P024_VerificarExistenciaOrdenesTrabajo">
+        <wsdl:port name="P024PortTypeEndpoint" binding="tns:P024PortTypeEndpointBinding">
+            <soap:address location="http://localhost:32005/edesur/distribution/maf/presentation/service/P001C_PeticionCreacionTDC"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="P024PortType">
+        <wsdl:operation name="P024_VerificarExistenciaOrdenesTrabajo_Operation">
+            <wsdl:input message="tns:P024_VerificarExistenciaOrdenesTrabajoRequest"/>
+            <wsdl:output message="tns:P024_VerificarExistenciaOrdenesTrabajoResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="P024PortTypeEndpointBinding" type="tns:P024PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="P024_VerificarExistenciaOrdenesTrabajo_Operation">
+            <soap:operation style="document" soapAction="P024_VerificarExistenciaOrdenesTrabajo_Operation"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="P024_VerificarExistenciaOrdenesTrabajoRequest"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="P024_VerificarExistenciaOrdenesTrabajoResponse"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="P024_VerificarExistenciaOrdenesTrabajoRequest">
+        <wsdl:part name="P024_VerificarExistenciaOrdenesTrabajoRequest" element="ns0:P024_VerificarExistenciaOrdenesTrabajoRequest"/>
+    </wsdl:message>
+    <wsdl:message name="P024_VerificarExistenciaOrdenesTrabajoResponse">
+        <wsdl:part name="P024_VerificarExistenciaOrdenesTrabajoResponse" element="ns0:P024_VerificarExistenciaOrdenesTrabajoResponse"/>
+    </wsdl:message>
+</wsdl:definitions>

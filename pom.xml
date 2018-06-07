@@ -20,6 +20,7 @@
         <module>SITDC203_message</module>
         <module>SITDC203_generated</module>
         <module>SITDC203_generated_pojo</module>
+        <module>P001C_generated_pojo</module>
     </modules>
 
     <properties>
@@ -30,6 +31,7 @@
         <version.maven-surefire-plugin>2.15</version.maven-surefire-plugin>
         <version.maven-bundle-plugin>2.3.7</version.maven-bundle-plugin>
         <cxf-version>3.1.5.redhat-630224</cxf-version>
+        <cxf-xjc-utils-version>3.0.5</cxf-xjc-utils-version>
         <jboss.fuse.bom.version>6.3.0.redhat-224</jboss.fuse.bom.version>
     </properties>
 

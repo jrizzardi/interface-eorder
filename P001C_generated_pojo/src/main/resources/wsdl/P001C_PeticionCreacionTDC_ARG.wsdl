@@ -1,0 +1,948 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:tns="http://xmlns.enel.com/edesur/presentation/requesttdc/service/P001C_PeticionCreacionTDC" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns0="http://xmlns.enel.com/edesur/presentation/requesttdc/abstractwsdl/xsd/P001CSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="Untitled" targetNamespace="http://xmlns.enel.com/edesur/presentation/requesttdc/service/P001C_PeticionCreacionTDC">
+    <wsdl:types>
+        <xs:schema xmlns="http://xmlns.enel.com/edesur/presentation/requesttdc/abstractwsdl/xsd/P001CSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xmlns.enel.com/edesur/presentation/requesttdc/abstractwsdl/xsd/P001CSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:complexType name="Anexo">
+                <xs:sequence>
+                    <xs:element name="NOMBRE_ANEXO" type="ns0:alfanumerico_300" minOccurs="0"/>
+                    <xs:element name="RUTA_ANEXO" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="OBLIGATORIO_EN_CAMPO" type="xs:boolean" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Anormalidad">
+                <xs:sequence>
+                    <xs:element name="CODIGO_ANORMALIDAD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_TAREA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="VALOR_REAL_DEL_TRABAJO" type="xs:double" minOccurs="0"/>
+                    <xs:element name="TIENE_COBRO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="MEDIDOR_ASOCIADO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfAnexo">
+                <xs:sequence>
+                    <xs:element name="item" type="ns0:Anexo" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfAnormalidades">
+                <xs:sequence>
+                    <xs:element name="item" type="ns0:Anormalidad" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfConsumo">
+                <xs:sequence>
+                    <xs:element name="item" type="ns0:Consumo" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfCotizacion">
+                <xs:sequence>
+                    <xs:element name="item" type="ns0:Cotizacion" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfCuentas">
+                <xs:sequence>
+                    <xs:element name="item" type="ns0:Cuentas" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfLectura">
+                <xs:sequence>
+                    <xs:element name="item" type="ns0:Lectura" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfMedidor">
+                <xs:sequence>
+                    <xs:element name="item" type="ns0:Medidor" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfNg">
+                <xs:sequence>
+                    <xs:element name="item" type="ns0:Ng" minOccurs="0" maxOccurs="5"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfObservacionCC">
+                <xs:sequence>
+                    <xs:element name="item" type="ns0:ObservacionCC" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfProductosNC">
+                <xs:sequence>
+                    <xs:element name="item" type="ns0:ProductosNC" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfReparacionDeElectrodomesticos">
+                <xs:sequence>
+                    <xs:element name="item" type="ns0:ReparacionDeElectrodomesticos" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfSello">
+                <xs:sequence>
+                    <xs:element name="item" type="ns0:Sello" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfTransformador">
+                <xs:sequence>
+                    <xs:element name="item" type="ns0:Transformador" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfVinculo">
+                <xs:sequence>
+                    <xs:element name="item" type="ns0:Vinculo" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOf_alfanumerico_150">
+                <xs:sequence>
+                    <xs:element name="item" type="ns0:alfanumerico_150" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOf_alfanumerico_50">
+                <xs:sequence>
+                    <xs:element name="item" type="ns0:alfanumerico_50" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayofDatosFalla">
+                <xs:sequence>
+                    <xs:element name="item" type="ns0:datos_fallaType" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Arrayoffactura">
+                <xs:sequence>
+                    <xs:element name="item" type="ns0:Factura" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Consumo">
+                <xs:sequence>
+                    <xs:element name="TIPO_CONSUMO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_HORARIO_CONSUMO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="VALOR_CONSUMO" type="xs:double" minOccurs="0"/>
+                    <xs:element name="ANOMALIA_DE_LECTURA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Cotizacion">
+                <xs:sequence>
+                    <xs:element name="CODIGO_ELEMENTO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_SUBELEMENTO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NOMBRE_ELEMENTO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NOMBRE_SUBELEMENTO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CANTIDAD_MATERIAL" type="xs:long" minOccurs="0"/>
+                    <xs:element name="VALOR_UNITARIO_MATERIAL_NO_BAREMADO" type="xs:double" minOccurs="0"/>
+                    <xs:element name="VALOR_IVA_MATERIAL_NO_BAREMADO" type="xs:double" minOccurs="0"/>
+                    <xs:element name="CANTIDAD_MANO_DE_OBRA" type="xs:double" minOccurs="0"/>
+                    <xs:element name="VALOR_UNITARIO_MANO_DE_OBRA_NO_BAREMADO" type="xs:double" minOccurs="0"/>
+                    <xs:element name="VALOR_IVA_MANO_DE_OBRA_NO_BAREMADO" type="xs:double" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Cuentas">
+                <xs:sequence>
+                    <xs:element name="CODIGO_CLIENTE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NOMBRE_CLIENTE" type="ns0:alfanumerico_300" minOccurs="0"/>
+                    <xs:element name="TIPO_CLIENTE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="RUTA_DE_LECTURA" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="TEXTO_DIRECCION" type="ns0:alfanumerico_300" minOccurs="0"/>
+                    <xs:element name="LATITUD_CLIENTE" type="ns0:numerico_10_8" minOccurs="0"/>
+                    <xs:element name="LONGITUD_CLIENTE" type="ns0:numerico_10_8" minOccurs="0"/>
+                    <xs:element name="TELEFONO_CONTACTO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CLAVE_TARIFA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="RESTRICCION_DE_CONVENIOS" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="MEDIDOR" type="ns0:ArrayOfMedidor" minOccurs="0"/>
+                    <xs:element name="TRANSFORMADOR" type="ns0:ArrayOfTransformador" minOccurs="0"/>
+                    <xs:element name="POTENCIA_REQUERIDA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CEDULA_CLIENTE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="EMAIL_CONTACTO_CON_EL_CLIENTE" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="TIPO_DOCUMENTO_IDENTIDAD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="DatosClaveProcesosTDC">
+                <xs:sequence>
+                    <xs:element name="LLAVE_SECRETA" type="ns0:alfanumerico_50"/>
+                    <xs:element name="CODIGO_DISTRIBUIDORA" type="ns0:alfanumerico_50"/>
+                    <xs:element name="CODIGO_SISTEMA_EXTERNO_DE_ORIGEN" type="ns0:alfanumerico_50"/>
+                    <xs:element name="CODIGO_TIPO_DE_TDC" type="ns0:alfanumerico_50"/>
+                    <xs:element name="CODIGO_EXTERNO_DEL_TDC" type="ns0:alfanumerico_50"/>
+                    <xs:element name="CODIGO_PROCESO" type="ns0:alfanumerico_50"/>
+                    <xs:element name="CODIGO_SUBPROCESO" type="ns0:alfanumerico_50"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="DatosComunesProcesosTDC">
+                <xs:sequence>
+                    <xs:element name="VALOR_NIVEL_OPERATIVO_3" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="PARAMETRO_NIVEL_OPERATIVO_3" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="FECHA_DE_VENCIMIENTO_PARA_ANS_LEGAL" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="FECHA_DE_VENCIMIENTO_PARA_ANS_INTERNO" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="FECHA_DE_VENCIMIENTO_PARA_ANS_CONTRACTISTA" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="TIEMPO_DE_REFERENCIA_PARA_ANS_LEGAL" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="TIEMPO_DE_REFERENCIA_PARA_ANS_INTERNO" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="TIEMPO_DE_REFERENCIA_PARA_ANS_CONTRACTISTA" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="VALOR_ANS_LEGAL" type="xs:long" minOccurs="0"/>
+                    <xs:element name="VALOR_ANS_INTERNO" type="xs:long" minOccurs="0"/>
+                    <xs:element name="VALOR_ANS_CONTRACTISTA" type="xs:long" minOccurs="0"/>
+                    <xs:element name="FECHA_Y_HORA_INICIO_CITA_CONCERTADA_EN_CAMPO" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="FECHA_Y_HORA_FIN_CITA_CONCERTADA_EN_CAMPO" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="CODIGO_CITA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NOMBRE_TDC_HOMOLOGADO" type="ns0:alfanumerico_300" minOccurs="0"/>
+                    <xs:element name="NOMBRE_TDC_PRE_HOMOLOGACION" type="ns0:alfanumerico_300" minOccurs="0"/>
+                    <xs:element name="CODIGO_DEL_AVISO" type="xs:long" minOccurs="0"/>
+                    <xs:element name="CODIGO_ORDEN_PADRE" type="xs:long" minOccurs="0"/>
+                    <xs:element name="FECHA_Y_HORA_DE_CREACION_DE_LA_ORDEN" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="PRIMERA_FECHA_UTIL" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="OBSERVACIONES" type="ns0:alfanumerico_2000" minOccurs="0"/>
+                    <xs:element name="ZONA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CENTRO_OPERATIVO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_RED" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="ANEXOS" type="ns0:ArrayOfAnexo" minOccurs="0"/>
+                    <xs:element name="SUMINSTROS" type="ns0:Suministro" minOccurs="0"/>
+                    <xs:element name="MEDIDORS" type="ns0:ArrayOfMedidor" minOccurs="0"/>
+                    <xs:element name="CONSUMOS" type="ns0:ArrayOfConsumo" minOccurs="0"/>
+                    <xs:element name="SELLOS" type="ns0:ArrayOfSello" minOccurs="0"/>
+                    <xs:element name="NUMERO_PROTOCOLO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_REMESSA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="SECTOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="EMPRESA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Factura">
+                <xs:sequence>
+                    <xs:element name="MES_ANO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="INDICATIVO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="VALOR_DE_LA_FACTURA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_FACTURA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GestionDesarolloCommercialUrgenciasInternas">
+                <xs:sequence>
+                    <xs:element name="NUMERO_AIC" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="XML_EXTENSION_PARAMS" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GestionDesarolloCommercialVentasPorSolicitudCliente">
+                <xs:sequence>
+                    <xs:element name="NUMERO_VENTA" type="xs:long" minOccurs="0"/>
+                    <xs:element name="TIPO_DOCUMENTO_IDENTIDAD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUMERO_DOCUMENTO_IDENTIDAD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_SOLICITUD_VENTAS" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="FECHA_DE_LA_SOLICITUD" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="PRODUCTO_VENTAS" type="ns0:alfanumerico_300" minOccurs="0"/>
+                    <xs:element name="CANTIDAD_DE_PRODUCTOS_A_INSTALAR" type="xs:long" minOccurs="0"/>
+                    <xs:element name="NUMERO_ORDEN" type="xs:long" minOccurs="0"/>
+                    <xs:element name="PUNTO_DE_VENTA" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="CARGA_INSTALADA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_VIVIENDA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TELEFONO_CELULAR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NOMBRE_Y_APELLIDO_CLIENTE_2" type="ns0:alfanumerico_300" minOccurs="0"/>
+                    <xs:element name="FORMA_DE_PAGO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="PRESUPUESTO_O_COTIZACION" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="CLIENTE_EN_CALIDAD_DE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="XML_EXTENSION_PARAMS" type="xs:string" minOccurs="0"/>
+                    <xs:element name="CD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="RADICADO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="SUB_ZONA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="REPARACION_DE_ELECTRODOMESTICOS" type="ns0:ArrayOfReparacionDeElectrodomesticos" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GestionFiscalizacionEnFrio">
+                <xs:sequence>
+                    <xs:element name="CODIGO_DISTRIBUIDORA_TDC_A_FISCALIZAR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_SISTEMA_EXTERNO_DE_ORIGEN_TDC_A_FISCALIZAR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_DEL_TIPO_TDC_HOMOLOGADO_A_FISCALIZAR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_EXTERNO_DEL_TDC_A_FISCALIZAR" type="xs:long" minOccurs="0"/>
+                    <xs:element name="PROCESO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_ACTIVIDAD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="LECTURA" type="xs:double" minOccurs="0"/>
+                    <xs:element name="CLAVE_LECTURA" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="CANAL_DE_ENTRADA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_ATENCION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CANTIDAD_DE_MEDIDORES" type="xs:long" minOccurs="0"/>
+                    <xs:element name="MOTIVO_CLIENTE" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="MOTIVO_EMPRESA" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="BUZON_O_ROL" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="XML_EXTENSION_PARAMS" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GestionImpagosCobranza">
+                <xs:sequence>
+                    <xs:element name="TIPO_DOCUMENTO_IDENTIDAD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUMERO_DOCUMENTO_IDENTIDAD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="ULTIMA_LECTURA_FACTURADA" type="xs:double" minOccurs="0"/>
+                    <xs:element name="FECHA_DE_RETIRO" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="FECHA_VENCIMIENTO_ULTIMA_FACTURA" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="DIRECCION_OTRAS_VISITAS" type="ns0:alfanumerico_255" minOccurs="0"/>
+                    <xs:element name="ASIGNACIONES" type="ns0:alfanumerico_255" minOccurs="0"/>
+                    <xs:element name="TIPO_CARTA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="ENTREGA_NUMERO" type="ns0:alfanumerico_255" minOccurs="0"/>
+                    <xs:element name="FECHA_DE_ASIGNACION" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="ID" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CARTERA_MOROSA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_CARTERA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUMERO_DE_CUENTA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="GRUPO_DE_LA_CUENTA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CAPACIDAD_DE_PROTECCION_DEL_EMPALME" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="XML_EXTENSION_PARAMS" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GestionImpagosSCR">
+                <xs:sequence>
+                    <xs:element name="CONTRATISTA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="ESTADO_CONEXION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="FASE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_CONEXION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_ORDEN" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="SEGMENTO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="REPROGRAMADA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="SUBTIPO_DE_CORTE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="SUBTIPO_DE_ORDEN" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_ZONA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="RADIOFRECUENCIA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="BLUETOOTH" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="REFACTURACION" type="ns0:alfanumerico_255" minOccurs="0"/>
+                    <xs:element name="MOTIVO_DE_LA_RECONEXION" type="ns0:alfanumerico_255" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_CORTE_Y_RECO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="PUNTO_DE_CORTE_Y_RECO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="ULTIMA_ACCION_EFECTIVA" type="ns0:alfanumerico_255" minOccurs="0"/>
+                    <xs:element name="SECTOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="MOTIVO_DEL_CORTE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="DEUDAS_ALTAS" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="EM_TUS_MANOS" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="VALOR_PRODUCTO_EN_TUS_MANOS" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CAPACIDAD_DE_PROTECCION_DEL_EMPALME" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_CAJA_MEDICION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_CAJA_TOMA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="XML_EXTENSION_PARAMS" type="xs:string" minOccurs="0"/>
+                    <xs:element name="VALOR_RECONEXION" type="xs:double" minOccurs="0"/>
+                    <xs:element name="CLIENTE_VITAL" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUMERO_DISPLAY_MEDIDOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="ID_DISPLAY_MEDIDOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="MARCA_DISPLAY_MEDIDOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="MODELO_DISPLAY_MEDIDOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="LECTURA_DISPLAY_MEDIDOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_RECO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="LISTADO_FACTURA" type="ns0:Arrayoffactura" minOccurs="0"/>
+                    <xs:element name="CODIGO_DE_BARRAS" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="FECHA_GENERACION" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="FLAG_TIENE_CONVENIO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_TENSION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_ZONA_PELIGROSA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="RANKING" type="xs:long" minOccurs="0"/>
+                    <xs:element name="DEUDA_CORTE" type="xs:double" minOccurs="0"/>
+                    <xs:element name="TIPO_DEUDA_CORTE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="PROCESO_DE_CORTE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_COLOR_CAJA_TEXTO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_PLAN_DE_TERRENO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUMERO_TRANSFORMADOR_DISTRIBUCION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GestionNuevasConexiones">
+                <xs:sequence>
+                    <xs:element name="LLAVE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="USUARIO_CREADOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DOCUMENTO_IDENTIDAD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUMERO_DOCUMENTO_IDENTIDAD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="MEDIDOR_VECINO_IZQ" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="MEDIDOR_VECINO_DER" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="SUBCLASE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NO_CLIENTE_VECINO_IZQ" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NO_CLIENTE_VECINO_DER" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="EMAIL_DE_CONTACTO_CON_EL_CLIENTE" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="FASE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TRANSFORMADOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_EMPALME" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CAPACIDAD_CONTRATADA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_PROTECCION_DEL_EMPALME" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_PUNTO_INSPECCIONADO" type="xs:long" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_CAJA_MEDICION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_CAJA_TOMA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_ACOMETIDA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CAPACIDAD_DEL_TRANSFORMADOR" type="xs:double" minOccurs="0"/>
+                    <xs:element name="SET" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="ALIMENTADOR" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="MOTIVO_DE_VENTA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="SUBTIPO_DE_ORDEN" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="PROMEDIO_DE_CONSUMO" type="xs:double" minOccurs="0"/>
+                    <xs:element name="TRABAJO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_SOLICITUD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUMERO_SOLICITUD" type="xs:long" minOccurs="0"/>
+                    <xs:element name="OBRA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_OBRA_CIVIL" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CORRECCION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_CONEXION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="COMPLEJIDAD_DE_LA_TAREA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="ATENCION_DE_EMERGENCIA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_SERVICIO_TEMPORAL" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_VERIFICACION_COMERCIAL" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_INSTALACION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="DESCRIPCION_TIPO_SERVICIO" type="ns0:alfanumerico_300" minOccurs="0"/>
+                    <xs:element name="TASA_DE_INTERES" type="xs:double" minOccurs="0"/>
+                    <xs:element name="NUMERO_ORDEN_DE_SERVICIO" type="ns0:ArrayOf_alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="VALOR_UF" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TARIFA_SOLICITADA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NRO_DE_DEFICIENCIA_OSINERGMIN" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_DE_TIPIFICACION_DE_OSINERGMIN" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="DESCRIPCION_DE_TIPIFICACION_DE_OSINERGMIN" type="ns0:alfanumerico_255" minOccurs="0"/>
+                    <xs:element name="POTENCIA_REQUERIDA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_ARRANQUE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="FLAG_REFORMA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="REP_DE_PAVIMENTOS" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="DESCRICAO_ETAPA_TIPO_SERVICIO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="DESCRICAO_RETORNO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TEMA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="MOTIVO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="VALADIC" type="ns0:ArrayOf_alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="VALOR_TOTAL_MATERIAL" type="xs:double" minOccurs="0"/>
+                    <xs:element name="VALOR_TOTAL_MANO_DE_OBRA" type="xs:double" minOccurs="0"/>
+                    <xs:element name="VALOR_TOTAL_OFERTA_COMERCIALE" type="xs:double" minOccurs="0"/>
+                    <xs:element name="DEFICIENCIA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CAPACIDAD_DE_PROTECCION_DEL_EMPALME" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="COTIZACIONS" type="ns0:ArrayOfCotizacion" minOccurs="0"/>
+                    <xs:element name="CLASE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="FECHA_PAGO" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="CAPACIDAD_DEL_EMPALME" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="XML_EXTENSION_PARAMS" type="xs:string" minOccurs="0"/>
+                    <xs:element name="TIPO_MEDIDA_CONEXION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="IVA" type="xs:double" minOccurs="0"/>
+                    <xs:element name="TASA_INTERES_CONNEXION" type="xs:double" minOccurs="0"/>
+                    <xs:element name="VALOR_DEL_KILOWATT" type="xs:double" minOccurs="0"/>
+                    <xs:element name="CONCENTRADOR_PRIMARIO" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="CONCENTRADOR_SECONDARIO" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="POSICION_MEDIDOR_CONCENTRADOR_PS1" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="POSICION_MEDIDOR_CONCENTRADOR_PS2" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="POSICION_MEDIDOR_CONCENTRADOR_PS3" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="NUMERO_DISPLAY" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="ID_DISPLAY" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="LECTURA_DISPLAY" type="xs:double" minOccurs="0"/>
+                    <xs:element name="MARCA_DISPLAY" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="MODELO_DISPLAY" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="SHUNT1" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="SHUNT2" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="SHUNT3" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="NUMERO_SERIE_CS" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="NUMERO_GRUPO" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="CODIGO_AGRUPAMIENTO" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="FAIXA_DE_CARGA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="VENTA_DE_PADRAO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CENTRO_OPERATIVO_ACT" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="DV_RUT" type="ns0:alfanumerico_1" minOccurs="0"/>
+                    <xs:element name="CONSTANTE" type="xs:double" minOccurs="0"/>
+                    <xs:element name="METROS_PARA_CALCULO_DURACION" type="xs:long" minOccurs="0"/>
+                    <xs:element name="DATO_TECNICO_PRC" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="RESTRICCION_DE_CONVENIOS" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CANTIDAD_SUMINISTRO" type="xs:long" minOccurs="0"/>
+                    <xs:element name="CAMBIA_MEDIDOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="GRUPO_PRODUCTO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_TENSION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="PRODUCTOSNC" type="ns0:ArrayOfProductosNC" minOccurs="0"/>
+                    <xs:element name="OBSERVACIONCC" type="ns0:ArrayOfObservacionCC" minOccurs="0"/>
+                    <xs:element name="CUENTAS" type="ns0:ArrayOfCuentas" minOccurs="0"/>
+                    <xs:element name="ID_RELACION" type="xs:long" minOccurs="0"/>
+                    <xs:element name="NOMBRE_TD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="PROPIEDAD_DEL_MEDIDOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_RED_D" type="ns0:alfanumerico_50" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GestionPerdidasInspecciones">
+                <xs:sequence>
+                    <xs:element name="LLAVE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="AREA_EMISORA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TRANSFORMADOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_CONEXION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="MEDIDA_TECNICA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_EMPALME" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CAPACIDAD_CONTRATADA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_PROTECCION_DEL_EMPALME" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_CAJA_MEDICION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_CAJA_TOMA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_ACOMETIDA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CAPACIDAD_DEL_TRANSFORMADOR" type="xs:double" minOccurs="0"/>
+                    <xs:element name="SET" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="NIVEL_DE_TENSION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CENTRO_DE_DISTRIBUCION" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="NUMERO_PROCESO_MASIVO" type="xs:long" minOccurs="0"/>
+                    <xs:element name="ORIGEN_DE_LA_INSPECCION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CANTIDAD_DE_SUMINISTROS_POR_SED" type="xs:long" minOccurs="0"/>
+                    <xs:element name="LATITUD_DEL_TRANSFORMADOR" type="ns0:numerico_10_8" minOccurs="0"/>
+                    <xs:element name="LONGITUD_DEL_TRANSFORMADOR" type="ns0:numerico_10_8" minOccurs="0"/>
+                    <xs:element name="ALIMENTADOR" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_EJECUCION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_INSPECCION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="PRODUCTO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TAREA_A_REALIZAR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="UBICACION_DE_LA_MEDIDA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="PROGRAMADO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="ORIGEN_DE_CONTRASTE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CLASSE" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="TOI1" type="xs:long" minOccurs="0"/>
+                    <xs:element name="DATA_TOI1" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="TOI2" type="xs:long" minOccurs="0"/>
+                    <xs:element name="DATA_TOI2" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="TOI3" type="xs:long" minOccurs="0"/>
+                    <xs:element name="DATA_TOI3" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="NUMERO_CAIXA" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="NUMERO_TAMPA_CAIXA" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_SELECAO" type="ns0:alfanumerico_255" minOccurs="0"/>
+                    <xs:element name="TIPO_DO_SERVICO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CIRCUITO" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="NOMBRE_CIRCUITO" type="ns0:alfanumerico_300" minOccurs="0"/>
+                    <xs:element name="NUMERO_DE_LA_ORDEN_DE_MACRO" type="xs:long" minOccurs="0"/>
+                    <xs:element name="CICLO_DEL_TRANSFORMADOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="PORCENTAJE_DE_CONSUMO_RESIDENCIAL" type="xs:double" minOccurs="0"/>
+                    <xs:element name="PORCENTAJE_DE_CONSUMO_COMERCIAL" type="xs:double" minOccurs="0"/>
+                    <xs:element name="PORCENTAJE_DE_CONSUMO_INDUSTRIAL" type="xs:double" minOccurs="0"/>
+                    <xs:element name="PORCENTAJE_DE_CONSUMO_OFICIAL" type="xs:double" minOccurs="0"/>
+                    <xs:element name="PORCENTAJE_DE_CONSUMO_TRAFO" type="xs:double" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_MEDICION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CAPACIDAD_DEL_TRANSFORMADOR_DE_POTENCIA" type="xs:double" minOccurs="0"/>
+                    <xs:element name="PUNTO_FISICO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CANTIDAD_DE_SERVICIOS_ELECTRICOS" type="xs:long" minOccurs="0"/>
+                    <xs:element name="PROMEDIO_DE_CONSUMO" type="xs:double" minOccurs="0"/>
+                    <xs:element name="CAPACIDAD_DE_PROTECCION_DEL_EMPALME" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="SUMINISTROS_INSPECCIONES" type="ns0:SuministroInspecciones" minOccurs="0"/>
+                    <xs:element name="VINCULOS" type="ns0:ArrayOfVinculo" minOccurs="0"/>
+                    <xs:element name="TRANSFORMADORS_CORRIENTE" type="ns0:ArrayOfTransformador" minOccurs="0"/>
+                    <xs:element name="TRANSFORMADORS_TENSION" type="ns0:ArrayOfTransformador" minOccurs="0"/>
+                    <xs:element name="XML_EXTENSION_PARAMS" type="xs:string" minOccurs="0"/>
+                    <xs:element name="TIPO_MEDIDA_CONEXION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="LISTA_TAREAS_A_REALIZAR" type="ns0:ArrayOf_alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_CLIENTE_SERVICIO_REFERENCIA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="FRANJA_TIPO_DE_SELECAO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="IRREGULARIDAD" type="ns0:ArrayOf_alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CONCENTRADOR_PRIMARIO" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="CONCENTRADOR_SECONDARIO" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="POSICION_MEDIDOR_PS1" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="NUMERO_DE_DISPLAY" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="ACTIVIDAD_COMERCIAL" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_FAMILIA_DE_PROPIEDAD_INSPECCIONADA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_VIVIENDA_DE_PROPIEDAD_INSPECCIONADA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_AGRUPAMIENTO_DE_PROPIEDAD_INSPECCIONADA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_BARRIO_DE_PROPIEDAD_INSPECCIONADA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="POTENCIA_CONTRATADA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="POTENCIA_CONTRATADA_HORA_PUNTA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="POTENCIA_CONTRATADA_FUERA_PUNTA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NOMBRE_SED" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CAJA_EMPALME" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_RESIDENTE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CONDUCTOR_EMPALME" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="VOLTAJE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="UBICACION_SED" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CAPACIDAD_EMPALME" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_USO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GestionPerdidasNormalizaciones">
+                <xs:sequence>
+                    <xs:element name="LLAVE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CUENTA" type="xs:long" minOccurs="0"/>
+                    <xs:element name="CENTRO_DE_COSTO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CONTRATISTA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="AREA_EMISORA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="ESTADO_CONEXION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="ESTRATO_SOCIO_ECONOMICO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="FASE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TRANSFORMADOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_CONEXION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="MEDIDA_TECNICA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_EMPALME" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CAPACIDAD_CONTRATADA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_PROTECCION_DEL_EMPALME" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_CAJA_MEDICION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_CAJA_TOMA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_ACOMETIDA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CAPACIDAD_DEL_TRANSFORMADOR" type="xs:double" minOccurs="0"/>
+                    <xs:element name="NUMERO_PROCESO_MASIVO" type="xs:long" minOccurs="0"/>
+                    <xs:element name="CLASSE" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="ESTADO_CLIENTE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TOI1" type="xs:long" minOccurs="0"/>
+                    <xs:element name="NUMERO_CAIXA" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="NUMERO_TAMPA_CAIXA" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_SELECAO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_ANOMALIA" type="ns0:ArrayOf_alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="LISTADO_NG" type="ns0:ArrayOfNg" minOccurs="0"/>
+                    <xs:element name="CICLO_NG" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DO_SERVICO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="REQUIERE_RADICADO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="UBICACION_DE_LA_MEDIDA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="PROCEDENCIA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_SOLICITUD_NORMALIZACION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CENTRO_DE_DISTRIBUCION" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="PUNTO_FISICO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="SET" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="ALIMENTADOR" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="ANORMALIDAD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="PRODUCTO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TAREA_DECISORIA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CAPACIDAD_DE_PROTECCION_DEL_EMPALME" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TRANSFORMADORS_CORRIENTE" type="ns0:ArrayOfTransformador" minOccurs="0"/>
+                    <xs:element name="TRANSFORMADORS_TENSION" type="ns0:ArrayOfTransformador" minOccurs="0"/>
+                    <xs:element name="XML_EXTENSION_PARAMS" type="xs:string" minOccurs="0"/>
+                    <xs:element name="TIPO_MEDIDA_CONEXION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="ARRAY_DE_TAREAS" type="ns0:alfanumerico_50" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element name="NO_DE_ACTA_DE_INTERVENCION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="RELACION_TRANSFORMADOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CANTIDAD_MEDIDORES" type="xs:long" minOccurs="0"/>
+                    <xs:element name="NOMBRE_PERSONA_COORDINACION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="FONO_PERSONA_COORDINACION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CORREO_EMAIL" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="NIVEL_DE_TENSION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CAPACIDAD_EMPALME" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CAJA_EMPALME" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CONDUCTOR_EMPALME" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="VOLTAJE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="PROPIEDAD_TRANSFORMADOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="LISTA_ANORMALIDADES" type="ns0:ArrayOfAnormalidades" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GestionPerdidasSmartMeter">
+                <xs:sequence>
+                    <xs:element name="TIPO_MEDIDA_CONEXION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="FASE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUMERO_TD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NOMBRE_TD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="LATITUD_TD" type="ns0:numerico_10_8" minOccurs="0"/>
+                    <xs:element name="LONGITUD_TD" type="ns0:numerico_10_8" minOccurs="0"/>
+                    <xs:element name="COMUNA_TD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_INSTALACION_TD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CAPACIDAD_TD" type="xs:double" minOccurs="0"/>
+                    <xs:element name="VINCULOS" type="ns0:ArrayOfVinculo" minOccurs="0"/>
+                    <xs:element name="COMPONENTE_CAJA" type="ns0:componente_caja" minOccurs="0"/>
+                    <xs:element name="COMPONENTE_SIMCARD" type="ns0:componente_simcard" minOccurs="0"/>
+                    <xs:element name="COMPONENTE_MODEM" type="ns0:componente_modem" minOccurs="0"/>
+                    <xs:element name="COMPONENTE_CONCENTRADOR" type="ns0:componente_concentrador" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Lectura">
+                <xs:sequence>
+                    <xs:element name="TIPO_LECTURA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="VALOR_LECTURA" type="xs:double" minOccurs="0"/>
+                    <xs:element name="TIPO_HORARIO_LECTURA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="FECHA_EVENTOS_LECTURA" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="VALOR_CONSUMO_LEIDO" type="xs:double" minOccurs="0"/>
+                    <xs:element name="VALOR_CONSUMO_FACTURADO" type="xs:double" minOccurs="0"/>
+                    <xs:element name="ANOMALIA_DE_LECTURA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="ANOMALIA_DE_FACTURACION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="VALOR_LECTURA_FACTURADA" type="xs:double" minOccurs="0"/>
+                    <xs:element name="CLAVE_DE_LECTURA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CPDANTERIOR_DUDOSO" type="xs:double" minOccurs="0"/>
+                    <xs:element name="PORCE_BAJA_DUDOSO" type="xs:double" minOccurs="0"/>
+                    <xs:element name="PORCE_ALZA_DUDOSO" type="xs:double" minOccurs="0"/>
+                    <xs:element name="PISO_DUDOSO" type="xs:double" minOccurs="0"/>
+                    <xs:element name="CONSTANTE" type="xs:long" minOccurs="0"/>
+                    <xs:element name="ENTEROS" type="xs:long" minOccurs="0"/>
+                    <xs:element name="DECIMALES" type="xs:long" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Medidor">
+                <xs:sequence>
+                    <xs:element name="CAPACIDAD_MEDIDOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUMERO_MEDIDOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CATEGORIA_MARCA_MEDIDOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="MARCA_MEDIDOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="MODELO_MEDIDOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="ORIGEN_DE_MEDIDOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CLASE_DEL_MEDIDOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_MEDIDOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="FECHA_INSTALACION_MEDIDOR" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="PROPIEDAD_DEL_MEDIDOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="UBICACION_DEL_MEDIDOR" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="NUMERO_DIGITOS_MEDIDOR" type="xs:long" minOccurs="0"/>
+                    <xs:element name="NUMERO_DE_FABRICA_DEL_MEDIDOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_TECNOLOGIA" type="ns0:alfanumerico_255" minOccurs="0"/>
+                    <xs:element name="NUMERO_DE_VUELTAS" type="xs:double" minOccurs="0"/>
+                    <xs:element name="TIPO_REGISTRADOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="ANO_FABRICACION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="FACTOR_DE_FACTURACION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CLASE_FACTOR_DE_FACTURACION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="LECTURAS" type="ns0:ArrayOfLectura" minOccurs="0"/>
+                    <xs:element name="AMPERAJE_MEDIDOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="VALOR_TENSION_NOMINAL" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="UNIDAD_MEDIDA_KC" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_MEDIDA_CONEXION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="DIGITOS_DECIMALES" type="xs:long" minOccurs="0"/>
+                    <xs:element name="CARACTERISTICA_MEDIDOR_PRINCIPAL" type="ns0:alfanumerico_50" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Ng">
+                <xs:sequence>
+                    <xs:element name="CODIGO_NG" type="ns0:alfanumerico_50" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ObservacionCC">
+                <xs:sequence>
+                    <xs:element name="CORRELATIVO_OBSERVACION" type="xs:long" minOccurs="0"/>
+                    <xs:element name="FECHA_INGRESO_OBSERVACION" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="AUTOR_OBSERVACION_CC" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="OBSERVACIONES_CC" type="ns0:alfanumerico_300" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="PeticionCreacionTDCRichiesta">
+                <xs:sequence>
+                    <xs:element name="DATOS_CLAVE_PROCESOS_TDC" type="ns0:DatosClaveProcesosTDC"/>
+                    <xs:element name="DATOS_COMUNES_PROCESOS_TDC" type="ns0:DatosComunesProcesosTDC"/>
+                    <xs:choice>
+                        <xs:element name="GESTION_DESAROLLO_COMMERCIAL_URGENCIAS_INTERNAS" type="ns0:GestionDesarolloCommercialUrgenciasInternas" minOccurs="0"/>
+                        <xs:element name="GESTION_DESAROLLO_COMMERCIAL_VENTAS_POR_SOLICITUD_CLIENTE" type="ns0:GestionDesarolloCommercialVentasPorSolicitudCliente" minOccurs="0"/>
+                        <xs:element name="GESTION_FISCALIZACION_EN_FRIO" type="ns0:GestionFiscalizacionEnFrio" minOccurs="0"/>
+                        <xs:element name="GESTION_IMPAGOS_COBRANZA" type="ns0:GestionImpagosCobranza" minOccurs="0"/>
+                        <xs:element name="GESTION_IMPAGOS_SCR" type="ns0:GestionImpagosSCR" minOccurs="0"/>
+                        <xs:element name="GESTION_NUEVAS_CONEXIONES" type="ns0:GestionNuevasConexiones" minOccurs="0"/>
+                        <xs:element name="GESTION_PERDIDAS_INSPECCIONES" type="ns0:GestionPerdidasInspecciones" minOccurs="0"/>
+                        <xs:element name="GESTION_PERDIDAS_NORMALIZACIONES" type="ns0:GestionPerdidasNormalizaciones" minOccurs="0"/>
+                        <xs:element name="GESTION_PERDIDAS_SMARTMETER" type="ns0:GestionPerdidasSmartMeter" minOccurs="0"/>
+                    </xs:choice>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="PeticionCreacionTDCRisposta">
+                <xs:sequence>
+                    <xs:element name="CODIGO_DEL_RESULTADO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="DESCRIPCION_DEL_RESULTADO" type="ns0:alfanumerico_255" minOccurs="0"/>
+                    <xs:element name="CODIGO_INTERNO_DEL_TDC" type="xs:long" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ProductosNC">
+                <xs:sequence>
+                    <xs:element name="CODIGO_PRODUCTO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="VALOR_PRODUCTO" type="xs:double" minOccurs="0"/>
+                    <xs:element name="CANTIDAD_PRODUCTO" type="xs:long" minOccurs="0"/>
+                    <xs:element name="TIPO_PRODUCTO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ReparacionDeElectrodomesticos">
+                <xs:sequence>
+                    <xs:element name="ELECTRODOMESTICO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="MARCA_ELECTRODOMESTICO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="OBSERVACIONES_REPARACION" type="ns0:alfanumerico_300" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Sello">
+                <xs:sequence>
+                    <xs:element name="SELLOS_EN_SISTEMA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="UBICACION_DEL_SELLO" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="TIPO_DE_SELLO" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="COLOR_DEL_SELLO" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="ESTADO_DEL_SELLO" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="PADRAO_FABRICANTE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="SERIE_SELLO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Suministro">
+                <xs:sequence>
+                    <xs:element name="CODIGO_CLIENTE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NOMBRE_Y_APELLIDO_CLIENTE" type="ns0:alfanumerico_300" minOccurs="0"/>
+                    <xs:element name="CODIGO_TIPO_CLIENTE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="RUTA_DE_LECTURA" type="ns0:alfanumerico_150" minOccurs="0"/>
+                    <xs:element name="TELEFONO_CONTACTO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TARIFA_EXISTENTE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CLAVE_TARIFA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="DEUDA" type="xs:double" minOccurs="0"/>
+                    <xs:element name="ANTIGUEDAD" type="xs:long" minOccurs="0"/>
+                    <xs:element name="GIRO_DE_NEGOCIO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="LATITUD_CLIENTE" type="ns0:numerico_10_8" minOccurs="0"/>
+                    <xs:element name="LONGITUD_CLIENTE" type="ns0:numerico_10_8" minOccurs="0"/>
+                    <xs:element name="TIPO_VIA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUMERO_VIA_DIRECCION" type="ns0:alfanumerico_300" minOccurs="0"/>
+                    <xs:element name="NUMERO_PLACA_DIRECCION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="COD_UNIDAD_PREDIAL" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUM_UNIDAD_PREDIAL" type="ns0:alfanumerico_255" minOccurs="0"/>
+                    <xs:element name="COD_MODALIDAD_UNIDAD_PREDIAL" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUM_MODALIDAD_UNIDAD_PREDIAL" type="ns0:alfanumerico_255" minOccurs="0"/>
+                    <xs:element name="LOCALIZACION_TERRENO" type="ns0:alfanumerico_255" minOccurs="0"/>
+                    <xs:element name="ID_COD_MUNICIPIO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_AGRUPACION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="AGRUPACION" type="ns0:alfanumerico_300" minOccurs="0"/>
+                    <xs:element name="MANZANA" type="ns0:alfanumerico_255" minOccurs="0"/>
+                    <xs:element name="LOTE" type="ns0:alfanumerico_255" minOccurs="0"/>
+                    <xs:element name="PROVINCIA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CODIGO_POSTAL" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="INDICADOR_D_DIRECCION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TEXTO_DIRECCION" type="ns0:alfanumerico_300" minOccurs="0"/>
+                    <xs:element name="COD_NOMBRE_VIA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="COD_CLASE_DE_VIA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="COD_LETRA_VIA_DIRECCION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="COD_CARDINAL_VIA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUMERO_CRUCE_DIRECCION" type="ns0:alfanumerico_300" minOccurs="0"/>
+                    <xs:element name="COD_LETRA_CRUCE_DIRECCION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="COD_CARDINAL_CRUCE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="COD_TIPO_UNIDAD_PREDIAL" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUM_TIPO_UNIDAD_PREDIAL" type="ns0:alfanumerico_255" minOccurs="0"/>
+                    <xs:element name="ID_COD_BARRIO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="PISO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="SUCURSAL" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="LOCALIDAD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="UPZ" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="SUBCLASE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="ESTADO_CONEXION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NOMBRE_SOLICITANTE" type="ns0:alfanumerico_200" minOccurs="0"/>
+                    <xs:element name="TELEFONO_SOLICITANTE" type="ns0:alfanumerico_15" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="SuministroInspecciones">
+                <xs:sequence>
+                    <xs:element name="CUENTA" type="xs:long" minOccurs="0"/>
+                    <xs:element name="CODIGO_CLIENTE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="ESTADO_CONEXION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="ESTRATO_SOCIO_ECONOMICO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="FASE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="FECHA_DE_IRREGULARIDAD" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="DESCRIPCION_IRREGULARIDAD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="ESTADO_CLIENTE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Transformador">
+                <xs:sequence>
+                    <xs:element name="FASE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUMERO_TRANSFORMADOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="CATEGORIA_MARCA_TRANSFORMADOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="MARCA_TRANSFORMADOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="MODELO_TRANSFORMADOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="RELACION_TRANSFORMADOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Vinculo">
+                <xs:sequence>
+                    <xs:element name="CODIGO_CLIENTE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="LATITUD_CLIENTE" type="ns0:numerico_10_8" minOccurs="0"/>
+                    <xs:element name="LONGITUD_CLIENTE" type="ns0:numerico_10_8" minOccurs="0"/>
+                    <xs:element name="TIPO_VIA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUMERO_VIA_DIRECCION" type="ns0:alfanumerico_300" minOccurs="0"/>
+                    <xs:element name="NUMERO_PLACA_DIRECCION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="COD_UNIDAD_PREDIAL" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUM_UNIDAD_PREDIAL" type="ns0:alfanumerico_255" minOccurs="0"/>
+                    <xs:element name="COD_MODALIDAD_UNIDAD_PREDIAL" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUM_MODALIDAD_UNIDAD_PREDIAL" type="ns0:alfanumerico_255" minOccurs="0"/>
+                    <xs:element name="LOCALIZACION_TERRENO" type="ns0:alfanumerico_255" minOccurs="0"/>
+                    <xs:element name="ID_COD_MUNICIPIO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="INDICADOR_D_DIRECCION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TEXTO_DIRECCION" type="ns0:alfanumerico_300" minOccurs="0"/>
+                    <xs:element name="COD_NOMBRE_VIA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="COD_CLASE_DE_VIA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="COD_LETRA_VIA_DIRECCION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="COD_CARDINAL_VIA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUMERO_CRUCE_DIRECCION" type="ns0:alfanumerico_300" minOccurs="0"/>
+                    <xs:element name="COD_LETRA_CRUCE_DIRECCION" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="COD_CARDINAL_CRUCE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="COD_TIPO_UNIDAD_PREDIAL" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUM_TIPO_UNIDAD_PREDIAL" type="ns0:alfanumerico_255" minOccurs="0"/>
+                    <xs:element name="ID_COD_BARRIO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="LOCALIDAD" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="UPZ" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="ESTRATO_SOCIO_ECONOMICO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="FASE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="MEDIDOR" type="ns0:Medidor" minOccurs="0"/>
+                    <xs:element name="SECTOR" type="ns0:alfanumerico_50" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="alfanumerico_1">
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="1"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="alfanumerico_15">
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="15"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="alfanumerico_150">
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="150"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="alfanumerico_200">
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="200"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="alfanumerico_2000">
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="alfanumerico_255">
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="255"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="alfanumerico_300">
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="255"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="alfanumerico_50">
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="50"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:complexType name="componente_caja">
+                <xs:sequence>
+                    <xs:element name="MARCA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="MODELO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUMERO_SERIE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="datos_falla" type="ns0:ArrayofDatosFalla" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="componente_concentrador">
+                <xs:sequence>
+                    <xs:element name="MARCA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="MODELO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUMERO_SERIE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="datos_falla" type="ns0:ArrayofDatosFalla" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="componente_modem">
+                <xs:sequence>
+                    <xs:element name="MARCA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="MODELO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUMERO_SERIE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="datos_falla" type="ns0:ArrayofDatosFalla" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="componente_simcard">
+                <xs:sequence>
+                    <xs:element name="MARCA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="MODELO" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="NUMERO_SERIE" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="datos_falla" type="ns0:ArrayofDatosFalla" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="datos_fallaType">
+                <xs:sequence>
+                    <xs:element name="FALLA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                    <xs:element name="TIPO_FALLA" type="ns0:alfanumerico_50" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="numerico_10_8">
+                <xs:restriction base="xs:decimal">
+                    <xs:totalDigits value="10"/>
+                    <xs:fractionDigits value="8"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:element name="P001C_PeticionCreacionTDCRequest" type="ns0:PeticionCreacionTDCRichiesta"/>
+            <xs:element name="P001C_PeticionCreacionTDCResponse" type="ns0:PeticionCreacionTDCRisposta"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="P001C_PeticionCreacionTDC">
+        <wsdl:port name="P001PortTypeEndpoint" binding="tns:P001PortTypeEndpointBinding">
+            <soap:address location="http://localhost:32001/edesur/distribution/maf/presentation/service/P001C_PeticionCreacionTDC"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="P001PortType">
+        <wsdl:operation name="P001C_PeticionCreacionTDC_Operation">
+            <wsdl:input message="tns:P001C_PeticionCreacionTDCRequest"/>
+            <wsdl:output message="tns:P001C_PeticionCreacionTDCResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="P001PortTypeEndpointBinding" type="tns:P001PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="P001C_PeticionCreacionTDC_Operation">
+            <soap:operation style="document" soapAction="P001C_PeticionCreacionTDC_Operation"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="request"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="response"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="P001C_PeticionCreacionTDCRequest">
+        <wsdl:part name="request" element="ns0:P001C_PeticionCreacionTDCRequest"/>
+    </wsdl:message>
+    <wsdl:message name="P001C_PeticionCreacionTDCResponse">
+        <wsdl:part name="response" element="ns0:P001C_PeticionCreacionTDCResponse"/>
+    </wsdl:message>
+</wsdl:definitions>
