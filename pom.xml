@@ -21,6 +21,7 @@
         <module>SITDC203_generated</module>
         <module>SITDC203_generated_pojo</module>
         <module>P001C_generated_pojo</module>
+        <module>test-seda</module>
     </modules>
 
     <properties>

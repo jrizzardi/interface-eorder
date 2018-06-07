@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+    <bean id="ordenMacMapper" class="edesur.eorder.creacion.OrdenMacMapper"/>
+
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint"
+                  id="edesur.test-seda"
+                  useMDCLogging="true" >
+
+        <dataFormats>
+            <soapjaxb id="soapFormatCrearTdc" contextPath="edesur.eorder.ws.creartdc" />
+        </dataFormats>
+
+        <route id="trigger-manual-direct">
+            <from uri="file:work/eorder/trigger?delete=true&amp;include=test-direct"/>
+            <log message="INICIO Direct" loggingLevel="WARN" logName="test-direct"/>
+            <to uri="sql:classpath:sql/cortesMAC.sql?dataSource=#SynergiaDS" />
+            <split streaming="true">
+                <simple>${body}</simple>
+                <to uri="bean:ordenMacMapper?method=mapRow"/>
+                <setHeader headerName="CamelFileName">
+                    <simple>${body.getBody().getDatosClave().getCodigoExternoTDC()}.xml</simple>
+                </setHeader>
+                <marshal ref="soapFormatCrearTdc"/>
+                <to uri="file:work/eorder/output/test-direct"/>
+            </split>
+            <log message="FIN Direct" loggingLevel="WARN" logName="test-direct"/>
+        </route>
+
+    </camelContext>
+
+    <reference id="SynergiaDS"
+               interface="javax.sql.DataSource"
+               availability="mandatory"
+               filter="(osgi.jndi.service.name=jdbc/SynergiaDS)" />
+
+</blueprint>
