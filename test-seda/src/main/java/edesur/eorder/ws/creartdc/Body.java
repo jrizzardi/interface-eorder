@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Body", propOrder = {
-    "datosClave"
+    "datosClave", "suministro"
 })
 public class Body {
 

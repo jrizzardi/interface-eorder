@@ -15,7 +15,7 @@
 
         <route id="trigger-manual-direct">
             <from uri="file:work/eorder/trigger?delete=true&amp;include=test-direct"/>
-            <log message="INICIO Direct" loggingLevel="WARN" logName="test-direct"/>
+            <log message="DIRECT INICIO" loggingLevel="WARN" logName="test-direct"/>
             <to uri="sql:classpath:sql/cortesMAC.sql?dataSource=#SynergiaDS" />
             <split streaming="true">
                 <simple>${body}</simple>
@@ -23,10 +23,55 @@
                 <setHeader headerName="CamelFileName">
                     <simple>${body.getBody().getDatosClave().getCodigoExternoTDC()}.xml</simple>
                 </setHeader>
+                <log message="DIRECT ${body.getBody().getDatosClave().getCodigoExternoTDC()}" loggingLevel="INFO" logName="test-direct"/>
                 <marshal ref="soapFormatCrearTdc"/>
                 <to uri="file:work/eorder/output/test-direct"/>
             </split>
-            <log message="FIN Direct" loggingLevel="WARN" logName="test-direct"/>
+            <log message="DIRECT FIN" loggingLevel="WARN" logName="test-direct"/>
+        </route>
+
+        <route id="trigger-manual-seda">
+            <from uri="file:work/eorder/trigger?delete=true&amp;include=test-seda"/>
+            <log message="SEDA INICIO" loggingLevel="WARN" logName="test-seda"/>
+            <to uri="sql:classpath:sql/cortesMAC.sql?dataSource=#SynergiaDS" />
+            <split streaming="true">
+                <simple>${body}</simple>
+                <to uri="seda:persist"/>
+            </split>
+            <log message="SEDA FIN" loggingLevel="WARN" logName="test-seda"/>
+        </route>
+
+        <route id="persist-seda">
+            <from uri="seda:persist"/>
+            <to uri="bean:ordenMacMapper?method=mapRow"/>
+            <setHeader headerName="CamelFileName">
+                <simple>${body.getBody().getDatosClave().getCodigoExternoTDC()}.xml</simple>
+            </setHeader>
+            <log message="SEDA ${body.getBody().getDatosClave().getCodigoExternoTDC()}" loggingLevel="INFO" logName="test-seda"/>
+            <marshal ref="soapFormatCrearTdc"/>
+            <to uri="file:work/eorder/output/test-seda"/>
+        </route>
+
+        <route id="trigger-manual-disruptor">
+            <from uri="file:work/eorder/trigger?delete=true&amp;include=test-disruptor"/>
+            <log message="DISRUPTOR INICIO" loggingLevel="WARN" logName="test-disruptor"/>
+            <to uri="sql:classpath:sql/cortesMAC.sql?dataSource=#SynergiaDS" />
+            <split streaming="true">
+                <simple>${body}</simple>
+                <to uri="disruptor:persist"/>
+            </split>
+            <log message="DISRUPTOR FIN" loggingLevel="WARN" logName="test-seda"/>
+        </route>
+
+        <route id="persist-disruptor">
+            <from uri="disruptor:persist"/>
+            <to uri="bean:ordenMacMapper?method=mapRow"/>
+            <setHeader headerName="CamelFileName">
+                <simple>${body.getBody().getDatosClave().getCodigoExternoTDC()}.xml</simple>
+            </setHeader>
+            <log message="DISRUPTOR ${body.getBody().getDatosClave().getCodigoExternoTDC()}" loggingLevel="INFO" logName="test-disruptor"/>
+            <marshal ref="soapFormatCrearTdc"/>
+            <to uri="file:work/eorder/output/test-disruptor"/>
         </route>
 
     </camelContext>

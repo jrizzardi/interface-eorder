@@ -28,6 +28,7 @@ public class ObjectFactory {
 
     public DatosClave createDatosClave() { return new DatosClave(); }
 
+    public Suministro createSuministro() { return new Suministro(); }
 
     @XmlElementDecl(namespace = "http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC501/Mensajes", name = "CreacionTdC_Request")
     public JAXBElement<Request> createCreacionTdCRequest(Request value) {
