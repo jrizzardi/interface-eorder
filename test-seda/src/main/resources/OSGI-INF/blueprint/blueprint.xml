@@ -9,6 +9,8 @@
                   id="edesur.test-seda"
                   useMDCLogging="true" >
 
+        <threadPool id="customPool" poolSize="50" threadName="pool"/>
+
         <dataFormats>
             <soapjaxb id="soapFormatCrearTdc" contextPath="edesur.eorder.ws.creartdc" />
         </dataFormats>
@@ -25,6 +27,42 @@
                 </setHeader>
                 <log message="DIRECT ${body.getBody().getDatosClave().getCodigoExternoTDC()}" loggingLevel="INFO" logName="test-direct"/>
                 <marshal ref="soapFormatCrearTdc"/>
+                <!--
+                <to uri="file:work/eorder/output/test-direct"/>
+                -->
+            </split>
+            <log message="DIRECT FIN" loggingLevel="WARN" logName="test-direct"/>
+        </route>
+
+        <route id="trigger-manual-direct-parallel">
+            <from uri="file:work/eorder/trigger?delete=true&amp;include=test-direct-p"/>
+            <log message="DIRECT INICIO" loggingLevel="WARN" logName="test-direct"/>
+            <to uri="sql:classpath:sql/cortesMAC.sql?dataSource=#SynergiaDS" />
+            <split streaming="true" parallelProcessing="true" >
+                <simple>${body}</simple>
+                <to uri="bean:ordenMacMapper?method=mapRow"/>
+                <setHeader headerName="CamelFileName">
+                    <simple>${body.getBody().getDatosClave().getCodigoExternoTDC()}.xml</simple>
+                </setHeader>
+                <log message="DIRECT ${body.getBody().getDatosClave().getCodigoExternoTDC()}" loggingLevel="INFO" logName="test-direct"/>
+                <marshal ref="soapFormatCrearTdc"/>
+                <to uri="file:work/eorder/output/test-direct"/>
+            </split>
+            <log message="DIRECT FIN" loggingLevel="WARN" logName="test-direct"/>
+        </route>
+
+        <route id="trigger-manual-direct-parallel-2">
+            <from uri="file:work/eorder/trigger?delete=true&amp;include=test-direct-p2"/>
+            <log message="DIRECT INICIO" loggingLevel="WARN" logName="test-direct"/>
+            <to uri="sql:classpath:sql/cortesMAC.sql?dataSource=#SynergiaDS" />
+            <split streaming="true" executorServiceRef="customPool" >
+                <simple>${body}</simple>
+                <to uri="bean:ordenMacMapper?method=mapRow"/>
+                <setHeader headerName="CamelFileName">
+                    <simple>${body.getBody().getDatosClave().getCodigoExternoTDC()}.xml</simple>
+                </setHeader>
+                <log message="DIRECT ${body.getBody().getDatosClave().getCodigoExternoTDC()}" loggingLevel="INFO" logName="test-direct"/>
+                <marshal ref="soapFormatCrearTdc"/>
                 <to uri="file:work/eorder/output/test-direct"/>
             </split>
             <log message="DIRECT FIN" loggingLevel="WARN" logName="test-direct"/>
@@ -34,7 +72,7 @@
             <from uri="file:work/eorder/trigger?delete=true&amp;include=test-seda"/>
             <log message="SEDA INICIO" loggingLevel="WARN" logName="test-seda"/>
             <to uri="sql:classpath:sql/cortesMAC.sql?dataSource=#SynergiaDS" />
-            <split streaming="true">
+            <split streaming="true" parallelProcessing="true">
                 <simple>${body}</simple>
                 <to uri="seda:persist"/>
             </split>
@@ -49,7 +87,9 @@
             </setHeader>
             <log message="SEDA ${body.getBody().getDatosClave().getCodigoExternoTDC()}" loggingLevel="INFO" logName="test-seda"/>
             <marshal ref="soapFormatCrearTdc"/>
+            <!--
             <to uri="file:work/eorder/output/test-seda"/>
+            -->
         </route>
 
         <route id="trigger-manual-disruptor">
@@ -71,7 +111,9 @@
             </setHeader>
             <log message="DISRUPTOR ${body.getBody().getDatosClave().getCodigoExternoTDC()}" loggingLevel="INFO" logName="test-disruptor"/>
             <marshal ref="soapFormatCrearTdc"/>
+            <!--
             <to uri="file:work/eorder/output/test-disruptor"/>
+            -->
         </route>
 
     </camelContext>
