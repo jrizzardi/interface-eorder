@@ -8,7 +8,7 @@ import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
-public class Resultado {
+public class ResultadoEjecucion {
     @XmlElement(required = true)
     private String codigoExternoTdC;
 

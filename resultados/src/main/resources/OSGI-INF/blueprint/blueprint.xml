@@ -7,8 +7,8 @@
 
 
     <cxf:cxfEndpoint id="recibirResultado"
-                     address="/eorder/resultados"
-                     serviceClass="edesur.eorder.ws.resultados.ResultadosService"/>
+                     address="/eorder"
+                     serviceClass="edesur.eorder.ws.EorderService"/>
 
     <bean id="crearResponse" class="edesur.eorder.ws.CreateResponse"/>
 
