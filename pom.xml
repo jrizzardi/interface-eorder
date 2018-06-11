@@ -154,4 +154,17 @@
         </plugins>
     </build>
 
+    <distributionManagement>
+        <repository>
+            <id>release</id>
+            <name>Releases</name>
+            <url>http://srvfuse01desa:8081/repository/edesur</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshot</id>
+            <name>Snapshot</name>
+            <url>http://srvfuse01desa:8081/repository/edesur-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
 </project>
