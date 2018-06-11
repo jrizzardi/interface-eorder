@@ -51,6 +51,40 @@
             <log message="DIRECT FIN" loggingLevel="WARN" logName="test-direct"/>
         </route>
 
+        <route id="trigger-manual-direct-parallel-stream">
+            <from uri="file:work/eorder/trigger?delete=true&amp;include=test-jdbc"/>
+            <log message="DIRECT INICIO" loggingLevel="WARN" logName="test-direct"/>
+            <setBody>
+                <constant>
+                    SELECT first 1 c.nro_servicio, c.numero_cliente, c.sucursal, trim(s.nombre) nombre,
+                    trim(s.nom_calle) || ' ' || trim(s.nro_dir) AS direccion,
+                    c.sector, c.zona, c.tarifa
+                    FROM servicio_cab c JOIN servicio_corte s ON (c.nro_servicio = s.nro_servicio)
+                    WHERE c.estado_transmision = 'T'
+                    AND c.id_servicio = 1
+                </constant>
+            </setBody>
+            <to uri="jdbc:SynergiaDS?outputType=StreamList&amp;resetAutoCommit=false" />
+            <!--
+            <split streaming="true" parallelProcessing="true" >
+                <simple>${body}</simple>
+                -->
+                <log message="${body}" loggingLevel="INFO" logName="test-direct"/>
+                <!--
+                <to uri="bean:ordenMacMapper?method=mapRow"/>
+                <setHeader headerName="CamelFileName">
+                    <simple>${body.getBody().getDatosClave().getCodigoExternoTDC()}.xml</simple>
+                </setHeader>
+                <log message="DIRECT ${body.getBody().getDatosClave().getCodigoExternoTDC()}" loggingLevel="INFO" logName="test-direct"/>
+                <marshal ref="soapFormatCrearTdc"/>
+                <to uri="file:work/eorder/output/test-direct"/>
+                -->
+            <!--
+            </split>
+            -->
+            <log message="DIRECT FIN" loggingLevel="WARN" logName="test-direct"/>
+        </route>
+
         <route id="trigger-manual-direct-parallel-2">
             <from uri="file:work/eorder/trigger?delete=true&amp;include=test-direct-p2"/>
             <log message="DIRECT INICIO" loggingLevel="WARN" logName="test-direct"/>

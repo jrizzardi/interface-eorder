@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:cxf="http://camel.apache.org/schema/blueprint/cxf"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0  http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
+
+
+
+    <cxf:cxfEndpoint id="recibirResultado"
+                     address="/eorder/resultados"
+                     serviceClass="edesur.eorder.ws.resultados.ResultadosService"/>
+
+    <bean id="crearResponse" class="edesur.eorder.ws.CreateResponse"/>
+
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint"
+                  id="edesur.eorder.resultados"
+                  useMDCLogging="true" >
+
+        <dataFormats>
+            <soapjaxb id="soapFormat" contextPath="edesur.eorder.ws.resultados.schemas" />
+        </dataFormats>
+
+        <route id="recibirResultadoTdC">
+            <from uri="cxf:bean:recibirResultado"/>
+            <log message="${body}" />
+            <transform>
+                <simple>${body.get(0)}</simple>
+            </transform>
+            <setHeader headerName="CamelFileName">
+                <simple>${body.getCodigoExternoTdC()}_${date:now:yyyyMMdd_HHmmss_SSS}.xml</simple>
+            </setHeader>
+            <to uri="file:work/eorder/resultado" />
+            <process ref="crearResponse"/>
+        </route>
+
+    </camelContext>
+
+</blueprint>

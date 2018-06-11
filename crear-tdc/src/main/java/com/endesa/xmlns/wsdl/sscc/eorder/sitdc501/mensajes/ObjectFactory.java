@@ -14,8 +14,8 @@ import javax.xml.namespace.QName;
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
- * content can consist of schema derived interfaces 
- * and classes representing the binding of schema 
+ * content can consist of schemas derived interfaces
+ * and classes representing the binding of schemas
  * type definitions, element declarations and model 
  * groups.  Factory methods for each of these are 
  * provided in this class.
@@ -28,7 +28,7 @@ public class ObjectFactory {
     private final static QName _CreacionTdCResponse_QNAME = new QName("http://xmlns.endesa.com/wsdl/SSCC/eOrder/SITDC501/Mensajes", "CreacionTdC_Response");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.endesa.xmlns.wsdl.sscc.eorder.sitdc501.mensajes
+     * Create a new ObjectFactory that can be used to create new instances of schemas derived classes for package: com.endesa.xmlns.wsdl.sscc.eorder.sitdc501.mensajes
      * 
      */
     public ObjectFactory() {
